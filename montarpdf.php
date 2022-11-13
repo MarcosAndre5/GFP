@@ -21,59 +21,61 @@ $qtdDiasMes = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 $html = "";
 
 $html .= "<!DOCTYPE html>
-    <html>
+    <html lang='pt-br'>
         <head>
             <title>Folha Gerada</title>
+            <link rel='stylesheet' type='text/css' href='estilo.css'>
         </head>
         <body>
-        <table style='border-collapse: collapse; width: 100%;' border='1'>
+        <table>
             <thead>
-                <th style='width: 100%; text-align: center;' colspan='4'>$nome</th>
+                <tr>
+                    <th colspan='4'>$nome</th>
+                </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td style='width: 10%; text-align: center;'><b>DATA</b></td>
-                    <td style='width: 13%; text-align: center;'><b>ENTRADA</b></td>
-                    <td style='width: 64%; text-align: center;'><b>ASSINATURA</b></td>
-                    <td style='width: 13%; text-align: center;'><b>SAIDA</b></td>
+                <tr class='legenda'>
+                    <td class='colunaData'>DATA</td>
+                    <td class='colunaEntrada'>ENTRADA</td>
+                    <td class='colunaAssinatura'>ASSINATURA</td>
+                    <td class='colunaSaida'>SAIDA</td>
                 </tr>";
 
 $sabado = false;
 
-for($i = 1; $i <= $qtdDiasMes[$mes]; $i++){
-    $feriado = isset($_POST['feriado'.$i]);
+for($dia = 1; $dia <= $qtdDiasMes[$mes]; $dia++){
+    $data = sprintf("%02d/%02d", $dia, $mes);
+    $feriado = isset($_POST['feriado'.$dia]);
 
-    if($i % 7 == $primeiroDiaMes) {
-        $html .= "<tr bgcolor='GRAY'>
-            <td style='width: 10%; text-align: center;'>".str_pad($i,2,"0",STR_PAD_LEFT)."/".str_pad($mes,2,"0",STR_PAD_LEFT)."</td>
-            <td style='width: 13%; text-align: center;'></td>
-            <td style='width: 64%; text-align: center;'>SABADO</td>
-            <td style='width: 13%; text-align: center;'></td>
-        </tr>";
+    if($dia % 7 == $primeiroDiaMes) {
+        $html .= "<tr class='naoLetivo'>
+            <td class='colunaData'>$data</td>
+            <td class='colunaEntrada'></td>
+            <td class='colunaAssinatura'>SABADO</td>
+            <td class='colunaSaida'></td>";
         $sabado = true;
-    } else if($i % 7 == $primeiroDiaMes + 1 || $sabado == true) {
-        $html .= "<tr bgcolor='GRAY'>
-            <td style='width: 10%; text-align: center;'>".str_pad($i,2,"0",STR_PAD_LEFT)."/".str_pad($mes,2,"0",STR_PAD_LEFT)."</td>
-            <td style='width: 13%; text-align: center;'></td>
-            <td style='width: 64%; text-align: center;'>DOMINGO</td>
-            <td style='width: 13%; text-align: center;'></td>
-        </tr>";
+    } else if($dia % 7 == $primeiroDiaMes + 1 || $sabado == true) {
+        $html .= "<tr class='naoLetivo'>
+            <td class='colunaData'>$data</td>
+            <td class='colunaEntrada'></td>
+            <td class='colunaAssinatura'>DOMINGO</td>
+            <td class='colunaSaida'></td>";
         $sabado = false;
-    } else if ($feriado == true){
-        $html .= "<tr bgcolor='GRAY'>
-            <td style='width: 10%; text-align: center;'>".str_pad($i,2,"0",STR_PAD_LEFT)."/".str_pad($mes,2,"0",STR_PAD_LEFT)."</td>
-            <td style='width: 13%; text-align: center;'></td>
-            <td style='width: 64%; text-align: center;'>FERIADO</td>
-            <td style='width: 13%; text-align: center;'></td>
-        </tr>";
+    } else if ($feriado == true) {
+        $html .= "<tr class='naoLetivo'>
+            <td class='colunaData'>$data</td>
+            <td class='colunaEntrada'></td>
+            <td class='colunaAssinatura'>FERIADO</td>
+            <td class='colunaSaida'></td>";
     } else {
         $html .= "<tr>
-            <td style='width: 10%; text-align: center;'>".str_pad($i,2,"0",STR_PAD_LEFT)."/".str_pad($mes,2,"0",STR_PAD_LEFT)."</td>
-            <td style='width: 13%; text-align: center;'>:</td>
-            <td style='width: 64%; text-align: center;'></td>
-            <td style='width: 13%; text-align: center;'>:</td>
-        </tr>";
+            <td class='colunaData'>$data</td>
+            <td class='colunaEntrada'>:</td>
+            <td class='colunaAssinatura'></td>
+            <td class='colunaSaida'>:</td>";
+            
     }
+    $html .= "</tr>";
 }
             
 $html .= "  </tbody>

@@ -1,0 +1,38 @@
+table {
+	border-collapse: collapse;
+	text-align: center;
+	width: 100%;
+}
+
+th {
+	border: 1px solid;
+}
+
+td {
+	border: 1px solid;
+}
+
+.nome {
+	column-count: 4;
+}
+
+
+.legenda {
+	font-weight: bold;
+}
+
+.colunaData {
+	width: 10%;
+}
+
+.colunaEntrada, .colunaSaida {
+	width: 13%;
+}
+
+.colunaAssinatura {
+	width: 64%;
+}
+
+.naoLetivo {
+	background-color: gray;
+}
