@@ -1,7 +1,6 @@
 <?php
 
 require './vendor/autoload.php';
-//require 'vendor/autoload.php';
 
 use Dompdf\Options;
 use Dompdf\Dompdf;
@@ -22,7 +21,7 @@ $qtdDiasMes = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 $html = "";
 
 $html .= "<!DOCTYPE html>
-    <html>
+    <html lang='pt-br'>
         <head>
             <title>Folha Gerada</title>
             <link rel='stylesheet' type='text/css' href='estilo.css'>
