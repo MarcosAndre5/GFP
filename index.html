@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>GFP - UERN-Natal</title>
+        <script type="text/javascript">
+            function mostrarCheckboxFeriados(){
+                var selectBox = document.getElementById("mes");
+                var mes = selectBox.options[selectBox.selectedIndex].value;
+                var checkboxBissexto = document.getElementById("bissexto").checked;
+
+                qtdDiasMes = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+                if(mes != 2 || mes == null) {
+                    var bissexto = document.querySelector("#bissexto");
+                    bissexto.disabled = true;
+                } else if(mes = 2) {
+                    var bissexto = document.querySelector("#bissexto");
+                    bissexto.disabled = false;
+                }
+
+                if(checkboxBissexto == true )
+                    qtdDiasMes[2] += 1
+
+                document.getElementById("escolhaferiados").innerHTML = "";
+
+                for(var i = 1; i <= qtdDiasMes[mes]; i++) {
+                    if(i < 10)
+                        document.getElementById('escolhaferiados').innerHTML += "<label>&emsp;"+i+"</label>"+
+                            "<input type='checkbox' id='feriado' name='feriado"+i+"' value='"+i+"'>"
+                    else
+                        document.getElementById('escolhaferiados').innerHTML += "<label>&ensp;"+i+"</label>"+
+                            "<input type='checkbox' id='feriado' name='feriado"+i+"' value='"+i+"'>"
+
+                    if(i % 10 == 0)
+                        document.getElementById('escolhaferiados').innerHTML += "<br>"
+                }
+            }
+
+            function limparCheckboxFeriados(){
+                var checkboxBissexto = document.getElementById("bissexto").checked;
+                document.getElementById("escolhaferiados").innerHTML = "";
+
+                mostrarCheckboxFeriados()
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Gerador de Folha de Pontos</h2>
+        
+        <form action="montarpdf.php" method="POST" target="_blank">
+            <label for="arquivo">Importar nomes de arquivo <b>nomes.csv:</b></label>
+            <input type="file" id="arquivo" name="arquivo">
+            <br><br>
+            <label>Nome do Servidor:</label>
+            <input maxlength="100" name="nome" required="required" size="25" type="text" placeholder="Digite o nome...">
+            <br><br>
+            
+            <label>Mês da Folha:</label> 
+            <select name="mes" id="mes" onchange="mostrarCheckboxFeriados()" required="required">
+                <option value="" selected="selected">Selecione...</option>
+                <option value="1">Janeiro</option>
+                <option value="2">Fevereiro</option>
+                <option value="3">Março</option>
+                <option value="4">Abril</option>
+                <option value="5">Maio</option>
+                <option value="6">Junho</option>
+                <option value="7">Julho</option>
+                <option value="8">Agosto</option>
+                <option value="9">Setembro</option>
+                <option value="10">Outubro</option>
+                <option value="11">Novembro</option>
+                <option value="12">Dezembro</option>
+            </select>
+            <br><br>
+            <label>Marque os feriados do mês:</label>
+            <p id="escolhaferiados"></p> 
+            <br>
+            <label disabled>O ano é bissexto?</label>
+            <input name="bissexto" id="bissexto" type="checkbox" value="bissexto" onchange="limparCheckboxFeriados()" disabled>
+            <br><br>
+            <label>Primeiro dia do mês será num(a):</label>
+            <select name="dia" required="required">
+                <option value="" selected="selected">Selecionar...</option>
+                <option value="0">Segunda-feira</option>
+                <option value="1">Terça-feira</option>
+                <option value="2">Quarta-feira</option>
+                <option value="3">Quinta-feira</option>
+                <option value="4">Sexta-feira</option>
+                <option value="5">Sábado</option>
+                <option value="6">Domingo</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Gerar Folha de Pontos">
+        </form>
+    </body>
+</html>
