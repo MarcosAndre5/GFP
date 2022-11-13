@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="pt-br">
     <head>
-        <meta charset="UTF-8"/>
+        <meta charset="UTF-8">
         <title>GFP - UERN-Natal</title>
-        <script type="text/javascript">
+        <script>
             function mostrarCheckboxFeriados(){
                 var selectBox = document.getElementById("mes");
                 var mes = selectBox.options[selectBox.selectedIndex].value;
@@ -76,7 +76,7 @@
             <label>Marque os feriados do mês:</label>
             <p id="escolhaferiados"></p> 
             <br>
-            <label disabled>O ano é bissexto?</label>
+            <label>O ano é bissexto?</label>
             <input name="bissexto" id="bissexto" type="checkbox" value="bissexto" onchange="limparCheckboxFeriados()" disabled>
             <br><br>
             <label>Primeiro dia do mês será num(a):</label>
