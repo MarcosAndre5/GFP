@@ -4,9 +4,14 @@ table {
 	width: 100%;
 }
 
-th { border: 1px solid; }
+h3 { text-align: center; }
 
-td { border: 1px solid; }
+tr { height: 13%; }
+
+th, td {
+	border: 1px solid;
+	height: 2.5%;
+}
 
 .nome { column-count: 4; }
 
@@ -14,8 +19,8 @@ td { border: 1px solid; }
 
 .colunaData { width: 10%; }
 
-.colunaEntrada, .colunaSaida { width: 13%; }
+.colunaEntrada, .colunaSaida { width: 15%; }
 
-.colunaAssinatura { width: 64%; }
+.colunaAssinatura { width: 60%; }
 
 .naoLetivo { background-color: darkgray; }
