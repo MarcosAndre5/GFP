@@ -1,19 +1,28 @@
+function importeAquivoCSV(){
+    var checkboxArquivo = document.getElementById("arquivo").checked
+
+    if(checkboxArquivo == true){
+        document.getElementById("nome").value = ""
+        document.getElementById("nome").disabled = true
+    }else
+        document.getElementById("nome").disabled = false
+}
+
 function mostrarCheckboxFeriados(){
-    var selectBox = document.getElementById("mes");
-    var mes = selectBox.options[selectBox.selectedIndex].value;
-    var checkboxBissexto = document.getElementById("bissexto").checked;
-
-    qtdDiasMes = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
-    if(mes == 2)
-        document.getElementById("divbissexto").hidden = false;
-    else
-        document.getElementById("divbissexto").hidden = true;
+    var selectBox = document.getElementById("mes")
+    var mes = selectBox.options[selectBox.selectedIndex].value
+    var checkboxBissexto = document.getElementById("bissexto").checked
+    qtdDiasMes = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
     if(checkboxBissexto == true)
         qtdDiasMes[2] += 1
 
-    document.getElementById("escolhaferiados").innerHTML = "";
+    if(mes == 2)
+        document.getElementById("divbissexto").hidden = false
+    else
+        document.getElementById("divbissexto").hidden = true
+
+    document.getElementById("escolhaferiados").innerHTML = ""
 
     for(var i = 1; i <= qtdDiasMes[mes]; i++) {
         if(i < 10)
@@ -29,8 +38,7 @@ function mostrarCheckboxFeriados(){
 }
 
 function limparCheckboxFeriados(){
-    var checkboxBissexto = document.getElementById("bissexto").checked;
-    document.getElementById("escolhaferiados").innerHTML = "";
+    document.getElementById("escolhaferiados").innerHTML = ""
 
     mostrarCheckboxFeriados()
 }

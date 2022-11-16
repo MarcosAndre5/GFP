@@ -9,7 +9,7 @@
         <table>
             <thead>
                 <tr>
-                    <th colspan='4'><?= $nome ?></th>
+                    <th colspan='4'><?= mb_strtoupper($nome) ?></th>
                 </tr>
             </thead>
             <tbody>

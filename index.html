@@ -8,11 +8,16 @@
     <body>
         <h2>Gerador de Folha de Pontos</h2>
         <form action="gerar_pdf.php" method="POST" target="_blank">
-            <label>Nome do Servidor:</label>
-            <input maxlength="100" name="nome" required="required" size="25" type="text" placeholder="Digite o nome...">
+            <label for="arquivo">Importar nomes de arquivo <b>nomes.csv:</b></label>
+            <input name="arquivo" id="arquivo" type="checkbox" value="1" onchange="importeAquivoCSV()">
             <br><br>
+            <div>
+                <label>Nome do Servidor:</label>
+                <input maxlength="100" name="nome"  id="nome" size="25" type="text" placeholder="Digite o nome..." required>
+            </div>
+            <br>
             <label>Mês da Folha:</label> 
-            <select name="mes" id="mes" onchange="mostrarCheckboxFeriados()" required="required">
+            <select name="mes" id="mes" onchange="mostrarCheckboxFeriados()" required>
                 <option value="" selected="selected">Selecione...</option>
                 <option value="1">Janeiro</option>
                 <option value="2">Fevereiro</option>
@@ -29,7 +34,7 @@
             </select>
             <br><br>
             <label>Primeiro dia do mês será num(a):</label>
-            <select name="dia" required="required">
+            <select name="dia" required>
                 <option value="" selected="selected">Selecionar...</option>
                 <option value="0">Segunda-feira</option>
                 <option value="1">Terça-feira</option>
@@ -48,9 +53,6 @@
                 <input name="bissexto" id="bissexto" type="checkbox" value="1" onchange="limparCheckboxFeriados()">
             </div>
             <br>
-            <label for="arquivo">Importar nomes de arquivo <b>nomes.csv:</b></label>
-            <input type="file" id="arquivo" name="arquivo">
-            <br><br>
             <input type="submit" value="Gerar Folha de Pontos">
         </form>
     </body>

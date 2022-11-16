@@ -7,10 +7,10 @@
     $nomeMes = "";
     $caminho = __DIR__;
     $mes = $_POST['mes'];
-    $primeiroDiaMes = $_POST['dia'];
-    $nome = mb_strtoupper($_POST['nome']);
-    $primeiroDiaMes = (6 - $primeiroDiaMes);
+    $arquivo = isset($_POST['arquivo']);
+    $primeiroDiaMes = (6 - $_POST['dia']);
     $anoBissexto = isset($_POST['bissexto']);
+    $nomes[] = isset($_POST['nome']) ? $_POST['nome'] : "";
     $qtdDiasMes = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
     $options = new Options();
@@ -47,9 +47,23 @@
             break;
     }
 
+    if($arquivo == true){
+        $conteudo = fopen('nomes.csv', 'r');
+        $i = 0;
+        
+        while ($linha = fgetcsv($conteudo, 1000)) {
+            if($i > 0)
+                $nomes[$i-1] = $linha[0];
+
+            $i++;
+        }
+        fclose($conteudo);
+    }
+
     ob_start();
 
-    require $caminho.'/montar_pdf.php';
+    foreach ($nomes as $nome)
+        require $caminho.'/montar_pdf.php';
     
     $dompdf->loadHtml(ob_get_clean());
 
