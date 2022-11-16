@@ -1,7 +1,7 @@
 table {
-	border-collapse: collapse;
-	text-align: center;
-	width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
 }
 
 h3 { text-align: center; }
@@ -9,8 +9,8 @@ h3 { text-align: center; }
 tr { height: 13%; }
 
 th, td {
-	border: 1px solid;
-	height: 2.5%;
+    border: 1px solid;
+    height: 2.5%;
 }
 
 .nome { column-count: 4; }
