@@ -4,56 +4,66 @@
         <meta charset="UTF-8">
         <title>GFP - UERN-Natal</title>
         <script src="funcoes.js"></script>
+        <link rel='stylesheet' type='text/css' href='estilo.css'>
     </head>
     <body>
-        <h2>Gerador de Folha de Pontos</h2>
-        <form action="gerar_pdf.php" method="POST" target="_blank">
-            <label for="arquivo">Importar nomes de arquivo <b>nomes.csv:</b></label>
-            <input name="arquivo" id="arquivo" type="checkbox" value="1" onchange="importeAquivoCSV()">
+        <div class="corpo">
+            <h1>Gerador de Folha de Pontos</h1>
+            <div class="menu">
+				<ul>
+					<li><a href="">GERAR FOLHA</a></li>
+					<li><a href="add_usuario.php">ADICIONAR USUÁRIO</a></li>
+					<li><a href="listar_usuarios.php">LISTAR USUÁRIOS</a></li>
+				</ul>
+			</div>
             <br><br>
-            <div>
+            <h2>Gerar Folha</h2>
+            <form action="gerar_pdf.php" method="POST" target="_blank">
+                <label for="arquivo">Importar nomes de arquivo <b>nomes.csv:</b></label>
+                <input name="arquivo" id="arquivo" type="checkbox" value="1" onchange="importeAquivoCSV()">
+                <br><br>
                 <label>Nome do Servidor:</label>
                 <input maxlength="100" name="nome"  id="nome" size="25" type="text" placeholder="Digite o nome..." required>
-            </div>
-            <br>
-            <label>Mês da Folha:</label> 
-            <select name="mes" id="mes" onchange="mostrarCheckboxFeriados()" required>
-                <option value="" selected="selected">Selecione...</option>
-                <option value="1">Janeiro</option>
-                <option value="2">Fevereiro</option>
-                <option value="3">Março</option>
-                <option value="4">Abril</option>
-                <option value="5">Maio</option>
-                <option value="6">Junho</option>
-                <option value="7">Julho</option>
-                <option value="8">Agosto</option>
-                <option value="9">Setembro</option>
-                <option value="10">Outubro</option>
-                <option value="11">Novembro</option>
-                <option value="12">Dezembro</option>
-            </select>
-            <br><br>
-            <label>Primeiro dia do mês será num(a):</label>
-            <select name="dia" required>
-                <option value="" selected="selected">Selecionar...</option>
-                <option value="0">Segunda-feira</option>
-                <option value="1">Terça-feira</option>
-                <option value="2">Quarta-feira</option>
-                <option value="3">Quinta-feira</option>
-                <option value="4">Sexta-feira</option>
-                <option value="5">Sábado</option>
-                <option value="6">Domingo</option>
-            </select>
-            <br><br>
-            <label>Marque os feriados do mês:</label>
-            <div id="escolhaferiados"></div>
-            <br>
-            <div id="divbissexto" hidden>
-                <label>O ano é bissexto?</label>
-                <input name="bissexto" id="bissexto" type="checkbox" value="1" onchange="limparCheckboxFeriados()">
-            </div>
-            <br>
-            <input type="submit" value="Gerar Folha de Pontos">
-        </form>
+                <br><br>
+                <label>Mês da Folha:</label> 
+                <select name="mes" id="mes" onchange="mostrarCheckboxFeriados()" required>
+                    <option value="" selected="selected">Selecione...</option>
+                    <option value="1">Janeiro</option>
+                    <option value="2">Fevereiro</option>
+                    <option value="3">Março</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Maio</option>
+                    <option value="6">Junho</option>
+                    <option value="7">Julho</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Setembro</option>
+                    <option value="10">Outubro</option>
+                    <option value="11">Novembro</option>
+                    <option value="12">Dezembro</option>
+                </select>
+                <br><br>
+                <label>Primeiro dia do mês será num(a):</label>
+                <select name="dia" required>
+                    <option value="" selected="selected">Selecionar...</option>
+                    <option value="0">Segunda-feira</option>
+                    <option value="1">Terça-feira</option>
+                    <option value="2">Quarta-feira</option>
+                    <option value="3">Quinta-feira</option>
+                    <option value="4">Sexta-feira</option>
+                    <option value="5">Sábado</option>
+                    <option value="6">Domingo</option>
+                </select>
+                <br><br>
+                <label>Marque os feriados do mês:</label>
+                <div id="escolhaferiados"></div>
+                <br>
+                <div id="divbissexto" hidden>
+                    <label>O ano é bissexto?</label>
+                    <input name="bissexto" id="bissexto" type="checkbox" value="1" onchange="limparCheckboxFeriados()">
+                </div>
+                <br>
+                <input type="submit" value="Gerar Folha de Pontos">
+            </form>
+        </div>
     </body>
 </html>

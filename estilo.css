@@ -1,16 +1,15 @@
+h1 h2 p { text-align: center; }
+
+body {
+	padding:0px;
+	margin:0px;
+	text-align:center;
+}
+
 table {
     border-collapse: collapse;
     text-align: center;
     width: 100%;
-}
-
-h3 { text-align: center; }
-
-tr { height: 13%; }
-
-th, td {
-    border: 1px solid;
-    height: 2.5%;
 }
 
 .nome { column-count: 4; }
@@ -24,3 +23,44 @@ th, td {
 .colunaAssinatura { width: 60%; }
 
 .naoLetivo { background-color: darkgray; }
+
+
+tr { height: 13%; }
+
+th, td {
+    border: 1px solid;
+    height: 2.5%;
+}
+
+.corpo {
+	width: 70%;
+	margin:0 auto;
+	padding: 10px;
+	text-align:left;
+}
+
+.menu ul {
+	padding:0px;
+	margin:0px;
+	float: left;
+	width: 100%;
+	background-color:#EDEDED;
+	list-style:none;
+	font:100% Tahoma;
+}
+
+.menu ul li { display: inline; }
+
+.menu ul li a {
+	background-color:#EDEDED;
+	color: #333;
+	text-decoration: none;
+	border-bottom:3px solid #EDEDED;
+	padding: 2px 10px;
+	float:left;
+}
+.menu ul li a:hover {
+	background-color:#D6D6D6;
+	color: #6D6D6D;
+	border-bottom:3px solid #EA0000;
+}
