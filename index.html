@@ -23,7 +23,7 @@
                 <input name="arquivo" id="arquivo" type="checkbox" value="1" onchange="importeAquivoCSV()">
                 <br><br>
                 <label>Nome do Servidor:</label>
-                <input maxlength="100" name="nome"  id="nome" size="25" type="text" placeholder="Digite o nome..." required>
+                <input name="nome" id="nome" onkeypress="mascara(this, '#####-####')" maxlength="40" type="text" placeholder="Digite o Nome do Servidor..." required>
                 <br><br>
                 <label>Mês da Folha:</label> 
                 <select name="mes" id="mes" onchange="mostrarCheckboxFeriados()" required>
