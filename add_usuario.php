@@ -3,55 +3,56 @@
     <head>
         <meta charset="UTF-8">
         <title>GFP - UERN-Natal</title>
-        <script src="funcoes.js"></script>
+        <script src='funcoes.js'></script>
         <link rel='stylesheet' type='text/css' href='estilo.css'>
     </head>
     <body>
         <div class="corpo">
             <h1>Gerador de Folha de Pontos</h1>
             <div class="menu">
-				<ul>
-					<li><a href="index.html">GERAR FOLHA</a></li>
-					<li><a href="">ADICIONAR USUÁRIO</a></li>
-					<li><a href="listar_usuarios.php">LISTAR USUÁRIOS</a></li>
-				</ul>
-			</div>
-            <br><br>
+                <ul>
+                    <li><a href="index.html">GERAR FOLHA</a></li>
+                    <li><a href="add_usuario.php">ADICIONAR USUÁRIO</a></li>
+                    <li><a href="listar_usuarios.php">LISTAR USUÁRIOS</a></li>
+                </ul>
+            </div>
+            <br>
             <h2>Adicionar Usuário</h2>
-			<form method="POST" action="add_usuario.php">
-				<label>Nome:</label>
-				<input type="text" name="nome" placeholder="Digite o Nome do Usuário..." required>
-				<br><br>
-				<label>Função:</label>
-				<select name="funcao" required>
-                    <option value="" selected="selected">Selecionar...</option>
+            <hr>
+            <form action="add_usuario.php" method="POST">
+                <label>Nome:</label>
+                <input type="text" name="nome" placeholder="Digite o Nome do Usuário..." required>
+                <br><br>
+                <label>Função:</label>
+                <select name="funcao" required>
+                    <option value="" selected>Selecionar...</option>
                     <option value="Servidor">Servidor</option>
                     <option value="Terceirizado">Terceirizado</option>
                     <option value="Estagiario">Estagiario</option>
                 </select>
-				<br><br>
-				<label>Condição Atual:</label>
-				<select name="condicao" required>
-                    <option value="" selected="selected">Selecionar...</option>
+                <br><br>
+                <label>Condição Atual:</label>
+                <select name="condicao" required>
+                    <option value="" selected>Selecionar...</option>
                     <option value="Trabalhando">Trabalhando</option>
                     <option value="Ferias">Férias</option>
                     <option value="Afastado">Afastado</option>
                 </select>
-				<br><br>
-				<label>Email:</label>
-				<input type="text" name="email" placeholder="Digite o Email do Usuário..." required>
-				<br><br>
-				<label>Telefone:</label>
-				<input type="text" name="telefone" placeholder="Digite seu o Telefone do Usuário..." required>
-				<br><br>
-				<input type="submit" name="enviarDados" value="Cadastrar Usuário">
-			</form>
-			<?php
-				if(isset($_POST["enviarDados"])){
-					$nome = $_POST["nome"];
-					$funcao = $_POST["funcao"];
-					$condicao = $_POST["condicao"];
-					$email = $_POST["email"];
+                <br><br>
+                <label>Email:</label>
+                <input type="text" name="email" placeholder="Digite o Email do Usuário..." required>
+                <br><br>
+                <label>Telefone:</label>
+                <input type="text" name="telefone" placeholder="Digite o Telefone do Usuário..." required>
+                <br><br>
+                <input type="submit" name="enviarDados" value="Cadastrar Usuário">
+            </form>
+            <?php
+                if(isset($_POST["enviarDados"])){
+                    $nome = $_POST["nome"];
+                    $funcao = $_POST["funcao"];
+                    $condicao = $_POST["condicao"];
+                    $email = $_POST["email"];
                     $telefone = $_POST["telefone"];
 
                     try {
@@ -75,8 +76,8 @@
                     } catch(PDOException $e) {
                         echo 'Error: '.$e->getMessage();
                     }
-				}
-			?>
-		</div>
-	</body>
+                }
+            ?>
+        </div>
+    </body>
 </html>

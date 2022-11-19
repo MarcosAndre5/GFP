@@ -3,31 +3,32 @@
     <head>
         <meta charset="UTF-8">
         <title>GFP - UERN-Natal</title>
-        <script src="funcoes.js"></script>
+        <script src='funcoes.js'></script>
         <link rel='stylesheet' type='text/css' href='estilo.css'>
     </head>
     <body>
         <div class="corpo">
             <h1>Gerador de Folha de Pontos</h1>
             <div class="menu">
-				<ul>
-					<li><a href="">GERAR FOLHA</a></li>
-					<li><a href="add_usuario.php">ADICIONAR USUÁRIO</a></li>
-					<li><a href="listar_usuarios.php">LISTAR USUÁRIOS</a></li>
-				</ul>
-			</div>
-            <br><br>
+                <ul>
+                    <li><a href="index.html">GERAR FOLHA</a></li>
+                    <li><a href="add_usuario.php">ADICIONAR USUÁRIO</a></li>
+                    <li><a href="listar_usuarios.php">LISTAR USUÁRIOS</a></li>
+                </ul>
+            </div>
+            <br>
             <h2>Gerar Folha</h2>
+            <hr>
             <form action="gerar_pdf.php" method="POST" target="_blank">
-                <label for="arquivo">Importar nomes de arquivo <b>nomes.csv:</b></label>
+                <label>Importar nomes de arquivo <b>nomes.csv:</b></label>
                 <input name="arquivo" id="arquivo" type="checkbox" value="1" onchange="importeAquivoCSV()">
                 <br><br>
                 <label>Nome do Servidor:</label>
-                <input name="nome" id="nome" onkeypress="mascara(this, '#####-####')" maxlength="40" type="text" placeholder="Digite o Nome do Servidor..." required>
+                <input name="nome" id="nome" maxlength="40" type="text" placeholder="Digite o Nome do Servidor..." required>
                 <br><br>
                 <label>Mês da Folha:</label> 
                 <select name="mes" id="mes" onchange="mostrarCheckboxFeriados()" required>
-                    <option value="" selected="selected">Selecione...</option>
+                    <option value="" selected>Selecione...</option>
                     <option value="1">Janeiro</option>
                     <option value="2">Fevereiro</option>
                     <option value="3">Março</option>
@@ -44,7 +45,7 @@
                 <br><br>
                 <label>Primeiro dia do mês será num(a):</label>
                 <select name="dia" required>
-                    <option value="" selected="selected">Selecionar...</option>
+                    <option value="" selected>Selecionar...</option>
                     <option value="0">Segunda-feira</option>
                     <option value="1">Terça-feira</option>
                     <option value="2">Quarta-feira</option>
