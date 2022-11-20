@@ -13,18 +13,26 @@
                 <ul>
                     <li><a href="index.html">GERAR FOLHA</a></li>
                     <li><a href="add_usuario.php">ADICIONAR USUÁRIO</a></li>
-                    <li><a href="listar_usuarios.php">LISTAR USUÁRIOS</a></li>
+                    <li><a href="listar_usuarios.php">LISTA DE USUÁRIOS</a></li>
                 </ul>
             </div>
             <br>
             <h2>Gerar Folha</h2>
             <hr>
             <form action="gerar_pdf.php" method="POST" target="_blank">
+                <label>Gerar Folha de: </label>&emsp;
+                <label>Servidores</label>
+                <input name="arquivo" id="" type="checkbox" value="1">&emsp;
+                <label>Terceirizados</label>
+                <input name="arquivo" id="" type="checkbox" value="1">&emsp;
+                <label>Estagiarios</label>
+                <input name="arquivo" id="" type="checkbox" value="1">
+                <br><br>
                 <label>Importar nomes de arquivo <b>nomes.csv:</b></label>
                 <input name="arquivo" id="arquivo" type="checkbox" value="1" onchange="importeAquivoCSV()">
                 <br><br>
                 <label>Nome do Servidor:</label>
-                <input name="nome" id="nome" maxlength="40" type="text" placeholder="Digite o Nome do Servidor..." required>
+                <input name="nome" id="nome" maxlength="40" type="text" placeholder="Digite o Nome do Servidor..." autocomplete="off" required>
                 <br><br>
                 <label>Mês da Folha:</label> 
                 <select name="mes" id="mes" onchange="mostrarCheckboxFeriados()" required>

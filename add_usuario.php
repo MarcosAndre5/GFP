@@ -13,13 +13,13 @@
                 <ul>
                     <li><a href="index.html">GERAR FOLHA</a></li>
                     <li><a href="add_usuario.php">ADICIONAR USUÁRIO</a></li>
-                    <li><a href="listar_usuarios.php">LISTAR USUÁRIOS</a></li>
+                    <li><a href="listar_usuarios.php">LISTA DE USUÁRIOS</a></li>
                 </ul>
             </div>
             <br>
             <h2>Adicionar Usuário</h2>
             <hr>
-            <form action="add_usuario.php" method="POST">
+            <form action="add_usuario.php" method="POST" autocomplete="off">
                 <label>Nome:</label>
                 <input type="text" name="nome" placeholder="Digite o Nome do Usuário..." required>
                 <br><br>
@@ -40,10 +40,10 @@
                 </select>
                 <br><br>
                 <label>Email:</label>
-                <input type="text" name="email" placeholder="Digite o Email do Usuário..." required>
+                <input type="text" name="email" placeholder="Digite o Email do Usuário...">
                 <br><br>
                 <label>Telefone:</label>
-                <input type="text" name="telefone" placeholder="Digite o Telefone do Usuário..." required>
+                <input type="text" name="telefone" id="telefone" maxlength="15" placeholder="Digite o Telefone do Usuário...">
                 <br><br>
                 <input type="submit" name="enviarDados" value="Cadastrar Usuário">
             </form>
