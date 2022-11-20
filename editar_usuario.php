@@ -22,7 +22,7 @@
 ?>
 
 <br>
-<form method="POST">
+<form method="POST" autocomplete="off">
     <hr>
     <label>Nome:</label>
     <input type="text" name="nome" value="<?php echo $nome; ?>" required>
@@ -47,7 +47,7 @@
     <input type="text" name="email" value="<?php echo $email; ?>">
     <br><br>
     <label>Telefone:</label>
-    <input type="text" name="telefone" value="<?php echo $telefone; ?>">
+    <input type="text" name="telefone" id="telefone" maxlength="15" value="<?php echo $telefone; ?>">
     <br><br>
     <input type="submit" name="atualizarDados" value="Atualizar Usuário">
 </form>
