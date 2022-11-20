@@ -3,7 +3,7 @@
         $id = $_GET["editarUsuario"];
 
         try {
-            include('conexaoBD.php');
+            include 'DB/conexao.php';
             
             $consulta = $pdo->query("SELECT * FROM usuarios WHERE id = $id");
 
@@ -61,7 +61,7 @@
         $telefone = $_POST["telefone"];
 
         try {
-            include('conexaoBD.php');
+            include 'DB/conexao.php';
           
             $stmt = $pdo->prepare('UPDATE usuarios SET 
                 nome = :nome, funcao = :funcao, condicao = :condicao, email = :email, telefone = :telefone
