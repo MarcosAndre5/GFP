@@ -43,7 +43,7 @@ function limparCheckboxFeriados(){
     mostrarCheckboxFeriados()
 }
 
-/* Máscaras ER */
+/* Máscaras de telefone ER */
 function mascara(o,f){
     v_obj=o
     v_fun=f

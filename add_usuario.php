@@ -1,4 +1,4 @@
-<?php include 'includes/cabecalho.html'; ?>
+<?php include 'frontend/cabecalho.html'; ?>
 
 <h2>Adicionar Usuário</h2>
 <hr>
@@ -30,6 +30,7 @@
     <br><br>
     <input type="submit" name="enviarDados" value="Cadastrar Usuário">
 </form>
+
 <?php
     if(isset($_POST["enviarDados"])){
         $nome = $_POST["nome"];
@@ -41,25 +42,21 @@
         try {
             include 'DB/conexao.php';
           
-            $stmt = $pdo->prepare('INSERT INTO usuarios(nome, funcao, condicao, email, telefone) 
-                VALUES(:nome, :funcao, :condicao, :email, :telefone)');
+            $insert = $pdo->query("INSERT INTO usuarios (nome, funcao, condicao, email, telefone) 
+                VALUES('$nome', '$funcao', '$condicao', '$email', '$telefone')");
             
-            $stmt->execute(array(
-              ':nome' => $nome,
-              ':funcao' => $funcao,
-              ':condicao' => $condicao,
-              ':email' => $email,
-              ':telefone' => $telefone
-            ));
-            
-            if($stmt->rowCount()){
-                echo "<script>alert('Usuário Cadastrado!')</script>";
-                echo "<script>window.open('add_usuario.php', '_self')</script>";
+            if($insert->rowCount()){
+                echo "<script>
+                        alert('Usuário Cadastrado!')
+                        window.open('add_usuario.php', '_self')
+                    </script>";
             }
         } catch(PDOException $e) {
             echo 'DB Erro: '.$e->getMessage();
+        } catch(Exception $e) {
+            echo 'Erro: '.$e->getMessage();
         }
     }
-?>
 
-<?php include 'includes/rodape.html'; ?>
+    include 'frontend/rodape.html';
+?>
