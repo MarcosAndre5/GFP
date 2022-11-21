@@ -1,2 +1,2 @@
 # GFP
-Aplicação web para geração de folha de pontos.
+Aplicação Web para empresas em geral para gerenciamento de usuários(colaboradores) e geração de folha individual de pontos.
