@@ -1,15 +1,15 @@
-<?php include 'includes/cabecalho.html'; ?>
+<?php include 'frontend/cabecalho.html'; ?>
 
 <h2>Gerar Folha</h2>
 <hr>
 <form action="gerar_pdf.php" method="POST" target="_blank">
     <label>Gerar Folha de: </label>&emsp;
     <label>Servidores</label>
-    <input name="arquivo" id="" type="checkbox" value="1">&emsp;
+    <input name="arquivo" id="1" type="checkbox" value="1">&emsp;
     <label>Terceirizados</label>
-    <input name="arquivo" id="" type="checkbox" value="1">&emsp;
+    <input name="arquivo" id="2" type="checkbox" value="1">&emsp;
     <label>Estagiarios</label>
-    <input name="arquivo" id="" type="checkbox" value="1">
+    <input name="arquivo" id="3" type="checkbox" value="1">
     <br><br>
     <label>Importar nomes de arquivo <b>nomes.csv:</b></label>
     <input name="arquivo" id="arquivo" type="checkbox" value="1" onchange="importeAquivoCSV()">
@@ -57,4 +57,4 @@
     <input type="submit" value="Gerar Folha de Pontos">
 </form>
 
-<?php include 'includes/rodape.html'; ?>
+<?php include 'frontend/rodape.html'; ?>

@@ -1,4 +1,4 @@
-<?php include 'includes/cabecalho.html'; ?>
+<?php include 'frontend/cabecalho.html'; ?>
 
 <h2>Lista de Usuários</h2>
 <hr>
@@ -13,31 +13,43 @@
         <td colspan='2'>Ação</td>
     </tr>
     <?php
-        include 'DB/conexao.php';
+        try{
+            include 'DB/conexao.php';
 
-        $consulta = $pdo->query("SELECT * FROM usuarios WHERE funcao='Servidor'");
+            $select = $pdo->query("SELECT * FROM usuarios WHERE funcao='Servidor'");
 
-        while($fila = $consulta->fetch(PDO::FETCH_ASSOC)){
-            $id = $fila['id'];
-            $nome = $fila['nome'];
-            $funcao = $fila['funcao'];
-            $condicao = $fila['condicao'];
-            $email = $fila['email'];
-            $telefone = $fila['telefone'];
+            $usuarios = $select->fetchAll(PDO::FETCH_ASSOC);
 
-            echo "<tr>
-                    <td>$nome</td>
-                    <td>$funcao</td>
-                    <td>$condicao</td>
-                    <td>$email</td>
-                    <td>$telefone</td>
-                    <td>
-                        <a href='editar_usuario.php?editarUsuario=$id'>Editar</a>
-                    </td>
-                    <td>
-                        <a href='listar_usuarios.php?deletarUsuario=$id'>Deletar</a>
-                    </td>
-                </tr>";
+            foreach ($usuarios as $usuario) {
+                $id = $usuario['id'];
+                $nome = $usuario['nome'];
+                $funcao = $usuario['funcao'];
+                $condicao = $usuario['condicao'];
+                $email = $usuario['email'];
+                $telefone = $usuario['telefone'];
+
+                echo "<tr>
+                        <td>$nome</td>
+                        <td>$funcao</td>
+                        <td>$condicao</td>
+                        <td>$email</td>
+                        <td>$telefone</td>
+                        <td>
+                            <a href='editar_usuario.php?editarUsuario=$id'>
+                                Editar
+                            </a>
+                        </td>
+                        <td>
+                            <a href='listar_usuarios.php?deletarUsuario=$id'>
+                                Deletar
+                            </a>
+                        </td>
+                    </tr>";
+            }
+        } catch(PDOException $e) {
+            echo 'DB Error: '.$e->getMessage();
+        } catch(Exception $e) {
+            echo 'Error: '.$e->getMessage();
         }
     ?>
 </table>
@@ -52,31 +64,43 @@
         <td colspan='2'>Ação</td>
     </tr>
     <?php
-        include 'DB/conexao.php';
+        try {
+            include 'DB/conexao.php';
 
-        $consulta = $pdo->query("SELECT * FROM usuarios WHERE funcao = 'Terceirizado'");
+            $select = $pdo->query("SELECT * FROM usuarios WHERE funcao = 'Terceirizado'");
 
-        while($fila = $consulta->fetch(PDO::FETCH_ASSOC)){
-            $id = $fila['id'];
-            $nome = $fila['nome'];
-            $funcao = $fila['funcao'];
-            $condicao = $fila['condicao'];
-            $email = $fila['email'];
-            $telefone = $fila['telefone'];
+            $usuarios = $select->fetchAll(PDO::FETCH_ASSOC);
 
-            echo "<tr>
-                    <td>$nome</td>
-                    <td>$funcao</td>
-                    <td>$condicao</td>
-                    <td>$email</td>
-                    <td>$telefone</td>
-                    <td>
-                        <a href='editar_usuario.php?editarUsuario=$id'>Editar</a>
-                    </td>
-                    <td>
-                        <a href='listar_usuarios.php?deletarUsuario=$id'>Deletar</a>
-                    </td>
-                </tr>";
+            foreach ($usuarios as $usuario) {
+                $id = $usuario['id'];
+                $nome = $usuario['nome'];
+                $funcao = $usuario['funcao'];
+                $condicao = $usuario['condicao'];
+                $email = $usuario['email'];
+                $telefone = $usuario['telefone'];
+
+                echo "<tr>
+                        <td>$nome</td>
+                        <td>$funcao</td>
+                        <td>$condicao</td>
+                        <td>$email</td>
+                        <td>$telefone</td>
+                        <td>
+                            <a href='editar_usuario.php?editarUsuario=$id'>
+                                Editar
+                            </a>
+                        </td>
+                        <td>
+                            <a href='listar_usuarios.php?deletarUsuario=$id'>
+                                Deletar
+                            </a>
+                        </td>
+                    </tr>";
+            }
+        } catch(PDOException $e) {
+          echo 'DB Error: '.$e->getMessage();
+        } catch(Exception $e) {
+          echo 'Error: '.$e->getMessage();
         }
     ?>
 </table>
@@ -91,31 +115,43 @@
         <td colspan='2'>Ação</td>
     </tr>
     <?php
-        include 'DB/conexao.php';
+        try {
+            include 'DB/conexao.php';
 
-        $consulta = $pdo->query("SELECT * FROM usuarios WHERE funcao = 'Estagiario'");
+            $select = $pdo->query("SELECT * FROM usuarios WHERE funcao = 'Estagiario'");
 
-        while($fila = $consulta->fetch(PDO::FETCH_ASSOC)){
-            $id = $fila['id'];
-            $nome = $fila['nome'];
-            $funcao = $fila['funcao'];
-            $condicao = $fila['condicao'];
-            $email = $fila['email'];
-            $telefone = $fila['telefone'];
+            $usuarios = $select->fetchAll(PDO::FETCH_ASSOC);
 
-            echo "<tr>
-                    <td>$nome</td>
-                    <td>$funcao</td>
-                    <td>$condicao</td>
-                    <td>$email</td>
-                    <td>$telefone</td>
-                    <td>
-                        <a href='editar_usuario.php?editarUsuario=$id'>Editar</a>
-                    </td>
-                    <td>
-                        <a href='listar_usuarios.php?deletarUsuario=$id'>Deletar</a>
-                    </td>
-                </tr>";
+            foreach ($usuarios as $usuario) {
+                $id = $usuario['id'];
+                $nome = $usuario['nome'];
+                $funcao = $usuario['funcao'];
+                $condicao = $usuario['condicao'];
+                $email = $usuario['email'];
+                $telefone = $usuario['telefone'];
+
+                echo "<tr>
+                        <td>$nome</td>
+                        <td>$funcao</td>
+                        <td>$condicao</td>
+                        <td>$email</td>
+                        <td>$telefone</td>
+                        <td>
+                            <a href='editar_usuario.php?editarUsuario=$id'>
+                                Editar
+                            </a>
+                        </td>
+                        <td>
+                            <a href='listar_usuarios.php?deletarUsuario=$id'>
+                                Deletar
+                            </a>
+                        </td>
+                    </tr>";
+            }
+        } catch(PDOException $e) {
+          echo 'DB Error: '.$e->getMessage();
+        } catch(Exception $e) {
+          echo 'Error: '.$e->getMessage();
         }
     ?>
 </table>
@@ -126,18 +162,20 @@
         try {
             include 'DB/conexao.php';
 
-            $stmt = $pdo->prepare('DELETE FROM usuarios WHERE id = :id');
-            $stmt->bindParam(':id', $id);
-            $stmt->execute();
+            $stmt = $pdo->prepare("DELETE FROM usuarios WHERE id = '$id'");
 
-            if($stmt->rowCount()){
-                echo "<script>alert('O usuário foi removido!')</script>";
-                echo "<script>window.open('listar_usuarios.php', '_self')</script>";
-            }
+            if($stmt->rowCount())
+                echo "<script>
+                        alert('O usuário foi removido!')
+                        window.open('listar_usuarios.php', '_self')
+                    </script>";
+
         } catch(PDOException $e) {
+          echo 'DB Error: '.$e->getMessage();
+        } catch(Exception $e) {
           echo 'Error: '.$e->getMessage();
         }
     }
-?>
 
-<?php include 'includes/rodape.html'; ?>
+    include 'frontend/rodape.html';
+?>

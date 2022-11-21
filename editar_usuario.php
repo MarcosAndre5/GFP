@@ -1,5 +1,5 @@
 <?php
-    include 'includes/cabecalho.html';
+    include 'frontend/cabecalho.html';
 
     if(isset($_GET["editarUsuario"])) {
         $id = $_GET["editarUsuario"];
@@ -28,34 +28,34 @@
 <form method="POST" autocomplete="off">
     <hr>
     <label>Nome:</label>
-    <input type="text" name="nome" value="<?php echo $nome; ?>" required>
+    <input type="text" name="nome" value="<?= $nome ?>" required>
     <br><br>
     <label>Função:</label>
-    <select name="funcao" required>
-        <option value="<?php echo $funcao; ?>" selected><?php echo $funcao; ?></option>
+    <select name="funcao">
+        <option value="<?= $funcao ?>" selected><?= $funcao ?></option>
         <option value="Servidor">Servidor</option>
         <option value="Terceirizado">Terceirizado</option>
         <option value="Estagiario">Estagiario</option>
     </select>
     <br><br>
-    <label>Condição:</label>
-    <select name="condicao" required>
-        <option value="<?php echo $condicao; ?>" selected><?php echo $condicao; ?></option>
+    <label>Condição Atual:</label>
+    <select name="condicao">
+        <option value="<?= $condicao ?>" selected><?= $condicao ?></option>
         <option value="Trabalhando">Trabalhando</option>
         <option value="Ferias">Férias</option>
         <option value="Afastado">Afastado</option>
     </select>
     <br><br>
     <label>Email:</label>
-    <input type="text" name="email" value="<?php echo $email; ?>">
+    <input type="text" name="email" value="<?= $email ?>">
     <br><br>
     <label>Telefone:</label>
-    <input type="tel" name="telefone" id="telefone" maxlength="15" value="<?php echo $telefone; ?>">
+    <input type="tel" name="telefone" id="telefone" maxlength="15" value="<?= $telefone ?>">
     <br><br>
     <input type="submit" name="atualizarDados" value="Atualizar Usuário">
-    <a href="listar_usuarios.php">
-        <input type="button" value="Cancelar">
-    </a>
+    <button onclick="location.href='listar_usuarios.php'">
+        Cancelar
+    </button>
 </form>
 
 <?php
@@ -90,5 +90,5 @@
             echo 'Error: '.$e->getMessage();
         }
     }
-    include 'includes/rodape.html';
+    include 'frontend/rodape.html';
 ?>

@@ -2,7 +2,7 @@
 <html lang='pt-br'>
     <head>
         <title>Folha de <?= $nomeMes ?> Gerada</title>
-        <link rel='stylesheet' type='text/css' href='estilo.css'>
+        <link rel='stylesheet' type='text/css' href='frontend/estilo.css'>
     </head>
     <body>
         <h3>FOLHA DE PONTO DE <?= strtoupper($nomeMes) ?></h3>
