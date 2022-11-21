@@ -1,9 +1,8 @@
-h1 h2 p { text-align: center; }
+h1, h3 { text-align: center; }
 
 body {
-	padding:0px;
-	margin:0px;
-	text-align:center;
+    padding: 0%;
+    margin: 0%;
 }
 
 table {
@@ -12,7 +11,16 @@ table {
     width: 100%;
 }
 
-.nome { column-count: 4; }
+th, td {
+    border: 1px solid;
+    height: 2.5%;
+}
+
+input[type=text] {
+    width: 40%;
+}
+
+footer { text-align: center; }
 
 .legenda { font-weight: bold; }
 
@@ -24,47 +32,30 @@ table {
 
 .naoLetivo { background-color: darkgray; }
 
-
-tr { height: 13%; }
-
-th, td {
-    border: 1px solid;
-    height: 2.5%;
-}
-
 .corpo {
-	width: 70%;
-	margin:0 auto;
-	padding: 10px;
-	text-align:left;
+    margin: 0% auto;
+    width: 70%;
 }
 
 .menu ul {
-	padding:0px;
-	margin:0px;
-	float: left;
-	width: 100%;
-	background-color:#EDEDED;
-	list-style:none;
-	font:100% Tahoma;
+    background-color: gainsboro;
+    float: left;
+    width: 100%;
+    padding: 0%;
+    margin: 0%;
 }
 
 .menu ul li { display: inline; }
 
 .menu ul li a {
-	background-color:#EDEDED;
-	color: #333;
-	text-decoration: none;
-	border-bottom:3px solid #EDEDED;
-	padding: 2px 10px;
-	float:left;
-}
-.menu ul li a:hover {
-	background-color:#D6D6D6;
-	color: #6D6D6D;
-	border-bottom:3px solid #EA0000;
+    border-bottom: solid gainsboro;
+    text-decoration: none;
+    padding: 1% 2%;
+    color: #333;
+    float:left;
 }
 
-input[type=text] {
-	width: 35%;
+.menu ul li a:hover {
+    background-color: silver;
+    border-bottom: solid red;
 }

@@ -1,4 +1,6 @@
 <?php
+    include 'includes/cabecalho.html';
+
     if(isset($_GET["editarUsuario"])) {
         $id = $_GET["editarUsuario"];
 
@@ -15,13 +17,14 @@
                 $email = $usuario['email'];
                 $telefone = $usuario['telefone'];
             }
+
+            echo "<h2>Editar de Usuários $nome</h2>";
         } catch(PDOException $e) {
             echo 'Error: '.$e->getMessage();
         }
     }
 ?>
 
-<br>
 <form method="POST" autocomplete="off">
     <hr>
     <label>Nome:</label>
@@ -47,9 +50,12 @@
     <input type="text" name="email" value="<?php echo $email; ?>">
     <br><br>
     <label>Telefone:</label>
-    <input type="text" name="telefone" id="telefone" maxlength="15" value="<?php echo $telefone; ?>">
+    <input type="tel" name="telefone" id="telefone" maxlength="15" value="<?php echo $telefone; ?>">
     <br><br>
     <input type="submit" name="atualizarDados" value="Atualizar Usuário">
+    <a href="listar_usuarios.php">
+        <input type="button" value="Cancelar">
+    </a>
 </form>
 
 <?php
@@ -84,4 +90,5 @@
             echo 'Error: '.$e->getMessage();
         }
     }
+    include 'includes/rodape.html';
 ?>

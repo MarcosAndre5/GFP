@@ -26,7 +26,7 @@
     <input type="text" name="email" placeholder="Digite o Email do Usuário...">
     <br><br>
     <label>Telefone:</label>
-    <input type="text" name="telefone" id="telefone" maxlength="15" placeholder="Digite o Telefone do Usuário...">
+    <input type="tel" name="telefone" id="telefone" maxlength="15" placeholder="Digite o Telefone do Usuário...">
     <br><br>
     <input type="submit" name="enviarDados" value="Cadastrar Usuário">
 </form>
