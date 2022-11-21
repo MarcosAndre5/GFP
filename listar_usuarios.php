@@ -32,7 +32,7 @@
                     <td>$email</td>
                     <td>$telefone</td>
                     <td>
-                        <a href='listar_usuarios.php?editarUsuario=$id'>Editar</a>
+                        <a href='editar_usuario.php?editarUsuario=$id'>Editar</a>
                     </td>
                     <td>
                         <a href='listar_usuarios.php?deletarUsuario=$id'>Deletar</a>
@@ -71,7 +71,7 @@
                     <td>$email</td>
                     <td>$telefone</td>
                     <td>
-                        <a href='listar_usuarios.php?editarUsuario=$id'>Editar</a>
+                        <a href='editar_usuario.php?editarUsuario=$id'>Editar</a>
                     </td>
                     <td>
                         <a href='listar_usuarios.php?deletarUsuario=$id'>Deletar</a>
@@ -110,7 +110,7 @@
                     <td>$email</td>
                     <td>$telefone</td>
                     <td>
-                        <a href='listar_usuarios.php?editarUsuario=$id'>Editar</a>
+                        <a href='editar_usuario.php?editarUsuario=$id'>Editar</a>
                     </td>
                     <td>
                         <a href='listar_usuarios.php?deletarUsuario=$id'>Deletar</a>
@@ -120,9 +120,6 @@
     ?>
 </table>
 <?php
-    if(isset($_GET["editarUsuario"]))
-        include("editar_usuario.php");
-
     if(isset($_GET["deletarUsuario"])) {
         $id = $_GET["deletarUsuario"];
 
