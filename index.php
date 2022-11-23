@@ -3,11 +3,14 @@
 <h2>Gerar Folha</h2>
 <hr>
 <form action="gerar_pdf.php" method="POST" target="_blank">
-    <label>Gerar Folha de: </label>&emsp;
+    <label>Gerar Folha para: </label>
+    <br>&emsp;
     <label>Servidores</label>
-    <input name="arquivo" id="1" type="checkbox" value="1">&emsp;
+    <input name="arquivo" id="1" type="checkbox" value="1">
+    <br>&emsp;
     <label>Terceirizados</label>
-    <input name="arquivo" id="2" type="checkbox" value="1">&emsp;
+    <input name="arquivo" id="2" type="checkbox" value="1">
+    <br>&emsp;
     <label>Estagiarios</label>
     <input name="arquivo" id="3" type="checkbox" value="1">
     <br><br>
