@@ -15,7 +15,7 @@
     </select>
     <br><br>
     <label>Condição Atual:</label>
-    <select name="condicao" required>
+    <select name="condicao">
         <option value="" selected>Selecionar...</option>
         <option value="Trabalhando">Trabalhando</option>
         <option value="Ferias">Férias</option>
@@ -28,11 +28,11 @@
     <label>Telefone:</label>
     <input type="tel" name="telefone" id="telefone" maxlength="15" placeholder="Digite o Telefone do Usuário...">
     <br><br>
-    <input type="submit" name="enviarDados" value="Cadastrar Usuário">
+    <input type="submit" name="cadastrar" value="Cadastrar Usuário">
 </form>
 
 <?php
-    if(isset($_POST["enviarDados"])){
+    if(isset($_POST["cadastrar"])){
         $nome = $_POST["nome"];
         $funcao = $_POST["funcao"];
         $condicao = $_POST["condicao"];

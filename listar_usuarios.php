@@ -16,33 +16,41 @@
         try{
             include 'DB/conexao.php';
 
-            $select = $pdo->query("SELECT * FROM usuarios WHERE funcao='Servidor'");
+            $select = $pdo->query("SELECT * FROM usuarios WHERE funcao = 'Servidor'");
 
             $usuarios = $select->fetchAll(PDO::FETCH_ASSOC);
 
-            foreach ($usuarios as $usuario) {
-                $id = $usuario['id'];
-                $nome = $usuario['nome'];
-                $funcao = $usuario['funcao'];
-                $condicao = $usuario['condicao'];
-                $email = $usuario['email'];
-                $telefone = $usuario['telefone'];
+            if(count($usuarios) > 0) {
+                foreach ($usuarios as $usuario) {
+                    $id = $usuario['id'];
+                    $nome = $usuario['nome'];
+                    $funcao = $usuario['funcao'];
+                    $condicao = $usuario['condicao'];
+                    $email = $usuario['email'];
+                    $telefone = $usuario['telefone'];
 
+                    echo "<tr>
+                            <td>$nome</td>
+                            <td>$funcao</td>
+                            <td>$condicao</td>
+                            <td>$email</td>
+                            <td>$telefone</td>
+                            <td>
+                                <a href='editar_usuario.php?editarUsuario=$id'>
+                                    Editar
+                                </a>
+                            </td>
+                            <td>
+                                <a href='listar_usuarios.php?deletarUsuario=$id'>
+                                    Deletar
+                                </a>
+                            </td>
+                        </tr>";
+                }
+            } else {
                 echo "<tr>
-                        <td>$nome</td>
-                        <td>$funcao</td>
-                        <td>$condicao</td>
-                        <td>$email</td>
-                        <td>$telefone</td>
-                        <td>
-                            <a href='editar_usuario.php?editarUsuario=$id'>
-                                Editar
-                            </a>
-                        </td>
-                        <td>
-                            <a href='listar_usuarios.php?deletarUsuario=$id'>
-                                Deletar
-                            </a>
+                        <td colspan='7'>
+                            Nenhum Servidor cadastrado.
                         </td>
                     </tr>";
             }
@@ -70,30 +78,38 @@
             $select = $pdo->query("SELECT * FROM usuarios WHERE funcao = 'Terceirizado'");
 
             $usuarios = $select->fetchAll(PDO::FETCH_ASSOC);
+            
+            if(count($usuarios) > 0) {
+                foreach ($usuarios as $usuario) {
+                    $id = $usuario['id'];
+                    $nome = $usuario['nome'];
+                    $funcao = $usuario['funcao'];
+                    $condicao = $usuario['condicao'];
+                    $email = $usuario['email'];
+                    $telefone = $usuario['telefone'];
 
-            foreach ($usuarios as $usuario) {
-                $id = $usuario['id'];
-                $nome = $usuario['nome'];
-                $funcao = $usuario['funcao'];
-                $condicao = $usuario['condicao'];
-                $email = $usuario['email'];
-                $telefone = $usuario['telefone'];
-
+                    echo "<tr>
+                            <td>$nome</td>
+                            <td>$funcao</td>
+                            <td>$condicao</td>
+                            <td>$email</td>
+                            <td>$telefone</td>
+                            <td>
+                                <a href='editar_usuario.php?editarUsuario=$id'>
+                                    Editar
+                                </a>
+                            </td>
+                            <td>
+                                <a href='listar_usuarios.php?deletarUsuario=$id'>
+                                    Deletar
+                                </a>
+                            </td>
+                        </tr>";
+                }
+            } else {
                 echo "<tr>
-                        <td>$nome</td>
-                        <td>$funcao</td>
-                        <td>$condicao</td>
-                        <td>$email</td>
-                        <td>$telefone</td>
-                        <td>
-                            <a href='editar_usuario.php?editarUsuario=$id'>
-                                Editar
-                            </a>
-                        </td>
-                        <td>
-                            <a href='listar_usuarios.php?deletarUsuario=$id'>
-                                Deletar
-                            </a>
+                        <td colspan='7'>
+                            Nenhum Terceirizado cadastrado.
                         </td>
                     </tr>";
             }
@@ -122,29 +138,37 @@
 
             $usuarios = $select->fetchAll(PDO::FETCH_ASSOC);
 
-            foreach ($usuarios as $usuario) {
-                $id = $usuario['id'];
-                $nome = $usuario['nome'];
-                $funcao = $usuario['funcao'];
-                $condicao = $usuario['condicao'];
-                $email = $usuario['email'];
-                $telefone = $usuario['telefone'];
+            if(count($usuarios) > 0) {
+                foreach ($usuarios as $usuario) {
+                    $id = $usuario['id'];
+                    $nome = $usuario['nome'];
+                    $funcao = $usuario['funcao'];
+                    $condicao = $usuario['condicao'];
+                    $email = $usuario['email'];
+                    $telefone = $usuario['telefone'];
 
+                    echo "<tr>
+                            <td>$nome</td>
+                            <td>$funcao</td>
+                            <td>$condicao</td>
+                            <td>$email</td>
+                            <td>$telefone</td>
+                            <td>
+                                <a href='editar_usuario.php?editarUsuario=$id'>
+                                    Editar
+                                </a>
+                            </td>
+                            <td>
+                                <a href='listar_usuarios.php?deletarUsuario=$id'>
+                                    Deletar
+                                </a>
+                            </td>
+                        </tr>";
+                }
+            } else {
                 echo "<tr>
-                        <td>$nome</td>
-                        <td>$funcao</td>
-                        <td>$condicao</td>
-                        <td>$email</td>
-                        <td>$telefone</td>
-                        <td>
-                            <a href='editar_usuario.php?editarUsuario=$id'>
-                                Editar
-                            </a>
-                        </td>
-                        <td>
-                            <a href='listar_usuarios.php?deletarUsuario=$id'>
-                                Deletar
-                            </a>
+                        <td colspan='7'>
+                            Nenhum Terceirizado cadastrado.
                         </td>
                     </tr>";
             }
@@ -162,14 +186,14 @@
         try {
             include 'DB/conexao.php';
 
-            $stmt = $pdo->prepare("DELETE FROM usuarios WHERE id = '$id'");
+            $delete = $pdo->query("DELETE FROM usuarios WHERE id = '$id'");
 
-            if($stmt->rowCount())
+            if($delete->rowCount()) {
                 echo "<script>
-                        alert('O usuário foi removido!')
+                        alert('Usuário removido!')
                         window.open('listar_usuarios.php', '_self')
                     </script>";
-
+            }
         } catch(PDOException $e) {
           echo 'DB Error: '.$e->getMessage();
         } catch(Exception $e) {
