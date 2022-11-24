@@ -5,7 +5,6 @@
     use Dompdf\Dompdf;
 
     $nomeMes = "";
-    $caminho = __DIR__;
     $mes = $_POST['mes'];
     $arquivo = isset($_POST['arquivo']);
     $primeiroDiaMes = (6 - $_POST['dia']);
@@ -14,12 +13,13 @@
     $qtdDiasMes = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
     $options = new Options();
-    $options->set('chroot', $caminho);
+    $options->set('chroot', __DIR__);
     $dompdf = new Dompdf($options);
 
-    if($anoBissexto)
+    if($anoBissexto) {
         $qtdDiasMes[2] += 1;
-
+    }
+    
     switch ($mes) {
         case 1: $nomeMes = "Janeiro";
             break;
@@ -47,14 +47,14 @@
             break;
     }
 
-    if($arquivo == true){
+    if($arquivo == true) {
         $conteudo = fopen('nomes.csv', 'r');
         $i = 0;
         
         while ($linha = fgetcsv($conteudo, 1000)) {
-            if($i > 0)
+            if($i > 0) {
                 $nomes[$i-1] = $linha[0];
-
+            }
             $i++;
         }
         fclose($conteudo);
@@ -63,7 +63,7 @@
     ob_start();
 
     foreach ($nomes as $nome)
-        require $caminho.'/montar_pdf.php';
+        include 'montar_pdf.php';
     
     $dompdf->loadHtml(ob_get_clean());
 

@@ -3,22 +3,22 @@
 <h2>Gerar Folha</h2>
 <hr>
 <form action="gerar_pdf.php" method="POST" target="_blank">
-    <label>Gerar Folha para: </label>
+    <label>Gerar folha para: </label>
     <br>&emsp;
     <label>Servidores</label>
-    <input name="arquivo" id="1" type="checkbox" value="1">
+    <input name="servidores" id="1" type="checkbox" value="servidores">
     <br>&emsp;
     <label>Terceirizados</label>
-    <input name="arquivo" id="2" type="checkbox" value="1">
+    <input name="terceirizados" id="2" type="checkbox" value="terceirizados">
     <br>&emsp;
     <label>Estagiarios</label>
-    <input name="arquivo" id="3" type="checkbox" value="1">
+    <input name="estagiarios" id="3" type="checkbox" value="estagiarios">
     <br><br>
     <label>Importar nomes de arquivo <b>nomes.csv:</b></label>
     <input name="arquivo" id="arquivo" type="checkbox" value="1" onchange="importeAquivoCSV()">
     <br><br>
-    <label>Nome do Servidor:</label>
-    <input name="nome" id="nome" maxlength="40" type="text" placeholder="Digite o Nome do Servidor..." autocomplete="off" required>
+    <label>Gerar folha única:</label>
+    <input name="nome" id="nome" maxlength="40" type="text" placeholder="Digite o Nome do Servidor..." autocomplete="off" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
     <br><br>
     <label>Mês da Folha:</label> 
     <select name="mes" id="mes" onchange="mostrarCheckboxFeriados()" required>

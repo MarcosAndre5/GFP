@@ -5,12 +5,12 @@
 <h3>Servidores</h3>
 <table>
     <tr class='legenda'>
-        <td>Nome</td>
-        <td>Função</td>
-        <td>Condição</td>
-        <td>Email</td>
-        <td>Telefone</td>
-        <td colspan='2'>Ação</td>
+        <th>Nome</th>
+        <th>Função</th>
+        <th>Condição</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th colspan='2'>Ação</th>
     </tr>
     <?php
         try{
@@ -36,12 +36,12 @@
                             <td>$email</td>
                             <td>$telefone</td>
                             <td>
-                                <a href='editar_usuario.php?editarUsuario=$id'>
+                                <a href='editar_usuario.php?editar=$id'>
                                     Editar
                                 </a>
                             </td>
                             <td>
-                                <a href='listar_usuarios.php?deletarUsuario=$id'>
+                                <a href='listar_usuarios.php?deletar=$id'>
                                     Deletar
                                 </a>
                             </td>
@@ -64,12 +64,12 @@
 <h3>Terceirizados</h3>
 <table>
     <tr class='legenda'>
-        <td>Nome</td>
-        <td>Função</td>
-        <td>Condição</td>
-        <td>Email</td>
-        <td>Telefone</td>
-        <td colspan='2'>Ação</td>
+        <th>Nome</th>
+        <th>Função</th>
+        <th>Condição</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th colspan='2'>Ação</th>
     </tr>
     <?php
         try {
@@ -95,12 +95,12 @@
                             <td>$email</td>
                             <td>$telefone</td>
                             <td>
-                                <a href='editar_usuario.php?editarUsuario=$id'>
+                                <a href='editar_usuario.php?editar=$id'>
                                     Editar
                                 </a>
                             </td>
                             <td>
-                                <a href='listar_usuarios.php?deletarUsuario=$id'>
+                                <a href='listar_usuarios.php?deletar=$id'>
                                     Deletar
                                 </a>
                             </td>
@@ -123,12 +123,12 @@
 <h3>Estagiarios</h3>
 <table>
     <tr class='legenda'>
-        <td>Nome</td>
-        <td>Função</td>
-        <td>Condição</td>
-        <td>Email</td>
-        <td>Telefone</td>
-        <td colspan='2'>Ação</td>
+        <th>Nome</th>
+        <th>Função</th>
+        <th>Condição</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th colspan='2'>Ação</th>
     </tr>
     <?php
         try {
@@ -154,12 +154,12 @@
                             <td>$email</td>
                             <td>$telefone</td>
                             <td>
-                                <a href='editar_usuario.php?editarUsuario=$id'>
+                                <a href='editar_usuario.php?editar=$id'>
                                     Editar
                                 </a>
                             </td>
                             <td>
-                                <a href='listar_usuarios.php?deletarUsuario=$id'>
+                                <a href='listar_usuarios.php?deletar=$id'>
                                     Deletar
                                 </a>
                             </td>
@@ -180,8 +180,8 @@
     ?>
 </table>
 <?php
-    if(isset($_GET["deletarUsuario"])) {
-        $id = $_GET["deletarUsuario"];
+    if(isset($_GET["deletar"])) {
+        $id = $_GET["deletar"];
 
         try {
             include 'DB/conexao.php';
