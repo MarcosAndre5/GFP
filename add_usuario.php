@@ -4,7 +4,7 @@
 <hr>
 <form action="add_usuario.php" method="POST" autocomplete="off">
     <label>Nome:</label>
-    <input type="text" name="nome" placeholder="Digite o Nome do Usuário..." required>
+    <input type="text" name="nome" placeholder="Digite o Nome do Usuário..." pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
     <br><br>
     <label>Função:</label>
     <select name="funcao" required>

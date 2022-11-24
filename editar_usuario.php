@@ -1,8 +1,8 @@
 <?php
     include 'frontend/cabecalho.html';
 
-    if(isset($_GET["editarUsuario"])) {
-        $id = $_GET["editarUsuario"];
+    if(isset($_GET["editar"])) {
+        $id = $_GET["editar"];
 
         try {
             include 'DB/conexao.php';
@@ -37,7 +37,7 @@
 <form method="POST" autocomplete="off">
     <hr>
     <label>Nome:</label>
-    <input type="text" name="nome" value="<?= $nome ?>" required>
+    <input type="text" name="nome" value="<?= $nome ?>" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
     <br><br>
     <label>Função:</label>
     <select name="funcao">
@@ -88,7 +88,7 @@
                     </script>";
             } else {
                 echo "<script>
-                        alert('Dados idênticos aos cadastrados!')
+                        alert('Dados iguais aos já cadastrados!')
                         window.open('listar_usuarios.php', '_self')
                     </script>";
             }
