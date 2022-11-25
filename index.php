@@ -5,20 +5,20 @@
 <form action="gerar_pdf.php" method="POST" target="_blank">
     <label>Gerar folha para: </label>
     <br>&emsp;
+    <input type="checkbox" id="servidor" name="tipo_usuario" value="Servidor" onchange="ativaDesativaBotao()">
     <label>Servidores</label>
-    <input name="servidores" id="1" type="checkbox" value="servidores">
     <br>&emsp;
+    <input type="checkbox" id="terceirizado" name="tipo_usuario" value="Terceirizado" onchange="ativaDesativaBotao()">
     <label>Terceirizados</label>
-    <input name="terceirizados" id="2" type="checkbox" value="terceirizados">
     <br>&emsp;
+    <input type="checkbox" id="estagiario" name="tipo_usuario" value="Estagiario" onchange="ativaDesativaBotao()">
     <label>Estagiarios</label>
-    <input name="estagiarios" id="3" type="checkbox" value="estagiarios">
     <br><br>
     <label>Importar nomes de arquivo <b>nomes.csv:</b></label>
-    <input name="arquivo" id="arquivo" type="checkbox" value="1" onchange="importeAquivoCSV()">
+    <input name="arquivo" id="arquivo" type="checkbox" value="1" onchange="ativaDesativaBotao()">
     <br><br>
-    <label>Gerar folha única:</label>
-    <input name="nome" id="nome" maxlength="40" type="text" placeholder="Digite o Nome do Servidor..." autocomplete="off" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
+    <label>Gerar folha única para:</label>
+    <input name="nome" id="nome" maxlength="40" type="text" placeholder="Digite o Nome do Servidor..." autocomplete="off" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required onchange="ativaDesativaBotao()">
     <br><br>
     <label>Mês da Folha:</label> 
     <select name="mes" id="mes" onchange="mostrarCheckboxFeriados()" required>
