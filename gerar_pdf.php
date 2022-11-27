@@ -1,8 +1,14 @@
 <?php
     require './vendor/autoload.php';
+    include 'DB/conexao.php';
 
     use Dompdf\Options;
     use Dompdf\Dompdf;
+
+    $options = new Options();
+    $options->set('chroot', __DIR__);
+    $dompdf = new Dompdf($options);
+    $consulta = new Consulta();
 
     $nomeMes = "";
     $mes = $_POST['mes'];
@@ -11,11 +17,7 @@
     $anoBissexto = isset($_POST['bissexto']);
     $nomes[] = isset($_POST['nome']) ? $_POST['nome'] : "";
     $qtdDiasMes = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    $tipoUsuarios = isset($_POST['tipo_usuario']) ? $_POST['tipo_usuario'] : false;
-
-    $options = new Options();
-    $options->set('chroot', __DIR__);
-    $dompdf = new Dompdf($options);
+    $funcao = isset($_POST['tipo_usuario']) ? $_POST['tipo_usuario'] : false;
 
     if($anoBissexto) {
         $qtdDiasMes[2] += 1;
@@ -48,19 +50,8 @@
             break;
     }
 
-    if($tipoUsuarios == true){
-        try {
-            include 'DB/conexao.php';
-
-            $select = $pdo->query("SELECT nome FROM usuarios WHERE funcao = '$tipoUsuarios'");
-            
-            $nomes = $select->fetchAll(PDO::FETCH_ASSOC);
-
-        } catch(PDOException $e) {
-            echo 'DB Error: '.$e->getMessage();
-        } catch(Exception $e) {
-            echo 'Error: '.$e->getMessage();
-        }
+    if($funcao == true){
+        $nomes = $consulta->listarNomesUsuariosFuncao($funcao);
     } else if($arquivo == true) {
         $conteudo = fopen('nomes.csv', 'r');
         $i = 0;
@@ -89,5 +80,5 @@
 
     $dompdf->render();
 
-    $dompdf->stream('Folha_'.$nomeMes.'_'.$tipoUsuarios.'.pdf', ["Attachment" => false]);
+    $dompdf->stream('Folha_'.$nomeMes.'_'.$funcao.'.pdf', ["Attachment" => false]);
 ?>

@@ -1,4 +1,9 @@
-<?php include 'frontend/cabecalho.html'; ?>
+<?php 
+    include 'frontend/cabecalho.html';
+    include 'DB/conexao.php';
+
+    $consulta = new Consulta();
+?>
 
 <h2>Adicionar Usuário</h2>
 <hr>
@@ -30,6 +35,9 @@
     <br><br>
     <input type="submit" name="cadastrar" value="Cadastrar Usuário">
 </form>
+<script>
+    $("#telefone").mask("(99) 99999-9999");
+</script>
 
 <?php
     if(isset($_POST["cadastrar"])){
@@ -39,22 +47,13 @@
         $email = $_POST["email"];
         $telefone = $_POST["telefone"];
 
-        try {
-            include 'DB/conexao.php';
-          
-            $insert = $pdo->query("INSERT INTO usuarios (nome, funcao, condicao, email, telefone) 
-                VALUES('$nome', '$funcao', '$condicao', '$email', '$telefone')");
-            
-            if($insert->rowCount()){
-                echo "<script>
-                        alert('Usuário Cadastrado!')
-                        window.open('add_usuario.php', '_self')
-                    </script>";
-            }
-        } catch(PDOException $e) {
-            echo 'DB Erro: '.$e->getMessage();
-        } catch(Exception $e) {
-            echo 'Erro: '.$e->getMessage();
+        $cadastro = $consulta->cadastrarUsuario($nome, $funcao, $condicao, $email, $telefone); 
+
+        if($cadastro->rowCount()){
+            echo "<script>
+                    alert('Usuário Cadastrado!')
+                    window.open('add_usuario.php', '_self')
+                </script>";
         }
     }
 

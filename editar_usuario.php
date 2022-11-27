@@ -1,36 +1,29 @@
 <?php
     include 'frontend/cabecalho.html';
+    include 'DB/conexao.php';
+
+    $consulta = new Consulta();
 
     if(isset($_GET["editar"])) {
         $id = $_GET["editar"];
 
-        try {
-            include 'DB/conexao.php';
+        $usuario = $consulta->buscarUsuario($id);
             
-            $select = $pdo->query("SELECT * FROM usuarios WHERE id = '$id'");
-
-            $usuario = $select->fetch(PDO::FETCH_ASSOC);
-            
-            if($usuario) {
-                $id = $usuario['id'];
-                $nome = $usuario['nome'];
-                $funcao = $usuario['funcao'];
-                $condicao = $usuario['condicao'];
-                $email = $usuario['email'];
-                $telefone = $usuario['telefone'];
-            } else {
-                echo "<script>
-                        alert('Usuário não encontrado!')
-                        window.open('listar_usuarios.php', '_self')
-                    </script>";
-            }
-
-            echo "<h2>Editar de Usuários $nome</h2>";
-        } catch(PDOException $e) {
-            echo 'DB Error: '.$e->getMessage();
-        } catch(Exception $e) {
-            echo 'Error: '.$e->getMessage();
+        if($usuario) {
+            $id = $usuario['id'];
+            $nome = $usuario['nome'];
+            $funcao = $usuario['funcao'];
+            $condicao = $usuario['condicao'];
+            $email = $usuario['email'];
+            $telefone = $usuario['telefone'];
+        } else {
+            echo "<script>
+                    alert('Usuário não encontrado!')
+                    window.open('listar_usuarios.php', '_self')
+                </script>";
         }
+
+        echo "<h2>Editar de Usuários $nome</h2>";
     }
 ?>
 
@@ -64,6 +57,9 @@
     <input type="submit" name="atualizar" value="Atualizar Usuário">
     <input type='submit' name='cancelar' value='Cancelar'>
 </form>
+<script>
+    $("#telefone").mask("(99) 99999-9999");
+</script>
 
 <?php
     if(isset($_POST["atualizar"])) {
@@ -73,29 +69,18 @@
         $email = $_POST["email"];
         $telefone = $_POST["telefone"];
 
-        try {
-            include 'DB/conexao.php';
-            
-            $update = $pdo->query("UPDATE usuarios SET 
-                    nome = '$nome', funcao = '$funcao', condicao = '$condicao', 
-                    email = '$email', telefone = '$telefone'
-                WHERE id = '$id'");
+        $atualiza = $consulta->atualizarUsuario($id, $nome, $funcao, $condicao, $email, $telefone);
 
-            if($update->rowCount()) {
-                echo "<script>
-                        alert('Dados do Usuário Atualizados!')
-                        window.open('listar_usuarios.php', '_self')
-                    </script>";
-            } else {
-                echo "<script>
-                        alert('Dados iguais aos já cadastrados!')
-                        window.open('listar_usuarios.php', '_self')
-                    </script>";
-            }
-        } catch(PDOException $e) {
-            echo 'DB Error: '.$e->getMessage();
-        } catch(Exception $e) {
-            echo 'Error: '.$e->getMessage();
+        if($atualiza->rowCount()) {
+            echo "<script>
+                    alert('Dados do Usuário Atualizados!')
+                    window.open('listar_usuarios.php', '_self')
+                </script>";
+        } else {
+            echo "<script>
+                    alert('Dados iguais aos já cadastrados!')
+                    window.open('listar_usuarios.php', '_self')
+                </script>";
         }
     } else if(isset($_POST['cancelar'])) {
         echo "<script>
