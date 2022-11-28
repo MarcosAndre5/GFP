@@ -12,8 +12,6 @@ Class Consulta {
 	    	$this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	    } catch(PDOException $e) {
             echo 'DB Erro: '.$e->getMessage();
-        } catch(Exception $e) {
-            echo 'Erro: '.$e->getMessage();
         }
     }
 

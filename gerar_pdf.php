@@ -19,9 +19,9 @@
     $qtdDiasMes = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
     $funcao = isset($_POST['tipo_usuario']) ? $_POST['tipo_usuario'] : false;
 
-    if($anoBissexto) {
+    if($anoBissexto)
         $qtdDiasMes[2] += 1;
-    }
+
     
     switch ($mes) {
         case 1: $nomeMes = "Janeiro";
@@ -65,20 +65,27 @@
         fclose($conteudo);
     }
 
-    ob_start();
+    if(count($nomes) > 0) {    
+        ob_start();
     
-    foreach ($nomes as $nome) {
-        if(is_array($nome)) {
-            $nome = $nome['nome'];
+        foreach ($nomes as $nome) {
+            if(is_array($nome))
+                $nome = $nome['nome'];
+
+            include 'montar_pdf.php';
         }
-        include 'montar_pdf.php';
-    }
+
     
-    $dompdf->loadHtml(ob_get_clean());
+        $dompdf->loadHtml(ob_get_clean());
 
-    $dompdf->setPaper('A4');
+        $dompdf->setPaper('A4');
 
-    $dompdf->render();
+        $dompdf->render();
 
-    $dompdf->stream('Folha_'.$nomeMes.'_'.$funcao.'.pdf', ["Attachment" => false]);
+        $dompdf->stream('Folha_'.$nomeMes.'_'.$funcao.'.pdf', ["Attachment" => false]);
+    } else
+        echo "<script>
+                alert('Nenhum Usuário $funcao Cadastrado até o momento!')
+                window.close()
+            </script>";
 ?>
