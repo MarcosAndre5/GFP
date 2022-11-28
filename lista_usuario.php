@@ -20,7 +20,7 @@
     <?php
         $usuarios = $consulta->listarUsuariosFuncao('Servidor');
 
-        if(count($usuarios) > 0) {
+        if(count($usuarios) > 0)
             foreach ($usuarios as $usuario) {
                 $id = $usuario['id'];
                 $nome = $usuario['nome'];
@@ -36,24 +36,23 @@
                         <td>$email</td>
                         <td>$telefone</td>
                         <td>
-                            <a href='editar_usuario.php?editar=$id'>
+                            <a href='edita_usuario.php?editar=$id'>
                                 Editar
                             </a>
                         </td>
                         <td>
-                            <a href='listar_usuarios.php?deletar=$id'>
+                            <a href='lista_usuario.php?deletar=$id' onclick=\"return confirm('Deseja deletar o Servidor?')\">
                                 Deletar
                             </a>
                         </td>
                     </tr>";
             }
-        } else {
+        else
             echo "<tr>
                     <td colspan='7'>
                         Nenhum Servidor cadastrado.
                     </td>
                 </tr>";
-        }
     ?>
 </table>
 <h3>Terceirizados</h3>
@@ -69,7 +68,7 @@
     <?php
         $usuarios = $consulta->listarUsuariosFuncao('Terceirizado');
         
-        if(count($usuarios) > 0) {
+        if(count($usuarios) > 0)
             foreach ($usuarios as $usuario) {
                 $id = $usuario['id'];
                 $nome = $usuario['nome'];
@@ -85,24 +84,23 @@
                         <td>$email</td>
                         <td>$telefone</td>
                         <td>
-                            <a href='editar_usuario.php?editar=$id'>
+                            <a href='edita_usuario.php?editar=$id'>
                                 Editar
                             </a>
                         </td>
                         <td>
-                            <a href='listar_usuarios.php?deletar=$id'>
+                            <a href='lista_usuario.php?deletar=$id' onclick=\"return confirm('Deseja deletar o Terceirizado?')\">
                                 Deletar
                             </a>
                         </td>
                     </tr>";
             }
-        } else {
+        else
             echo "<tr>
                     <td colspan='7'>
                         Nenhum Terceirizado cadastrado.
                     </td>
                 </tr>";
-        }
     ?>
 </table>
 <h3>Estagiarios</h3>
@@ -118,7 +116,7 @@
     <?php
         $usuarios = $consulta->listarUsuariosFuncao('Estagiario');
 
-        if(count($usuarios) > 0) {
+        if(count($usuarios) > 0)
             foreach ($usuarios as $usuario) {
                 $id = $usuario['id'];
                 $nome = $usuario['nome'];
@@ -134,24 +132,23 @@
                         <td>$email</td>
                         <td>$telefone</td>
                         <td>
-                            <a href='editar_usuario.php?editar=$id'>
+                            <a href='edita_usuario.php?editar=$id'>
                                 Editar
                             </a>
                         </td>
                         <td>
-                            <a href='listar_usuarios.php?deletar=$id'>
+                            <a href='lista_usuario.php?deletar=$id' onclick=\"return confirm('Deseja deletar o Estagiário?')\">
                                 Deletar
                             </a>
                         </td>
                     </tr>";
             }
-        } else {
+        else
             echo "<tr>
                     <td colspan='7'>
                         Nenhum Terceirizado cadastrado.
                     </td>
                 </tr>";
-        }
     ?>
 </table>
 
@@ -161,12 +158,8 @@
 
         $delete = $consulta->deletarUsuario($id);
 
-        if($delete->rowCount()) {
-            echo "<script>
-                    alert('Usuário removido!')
-                    window.open('listar_usuarios.php', '_self')
-                </script>";
-        }
+        if($delete->rowCount())
+            echo "<script>usuarioDeletado()</script>";
     }
 
     include 'frontend/rodape.html';

@@ -16,12 +16,8 @@
             $condicao = $usuario['condicao'];
             $email = $usuario['email'];
             $telefone = $usuario['telefone'];
-        } else {
-            echo "<script>
-                    alert('Usuário não encontrado!')
-                    window.open('listar_usuarios.php', '_self')
-                </script>";
-        }
+        } else
+            echo "<script>usuarioNaoEncontrado()</script>";
 
         echo "<h2>Editar de Usuários $nome</h2>";
     }
@@ -57,9 +53,7 @@
     <input type="submit" name="atualizar" value="Atualizar Usuário">
     <input type='submit' name='cancelar' value='Cancelar'>
 </form>
-<script>
-    $("#telefone").mask("(99) 99999-9999");
-</script>
+<script>$("#telefone").mask("(99) 99999-9999");</script>
 
 <?php
     if(isset($_POST["atualizar"])) {
@@ -71,22 +65,13 @@
 
         $atualiza = $consulta->atualizarUsuario($id, $nome, $funcao, $condicao, $email, $telefone);
 
-        if($atualiza->rowCount()) {
-            echo "<script>
-                    alert('Dados do Usuário Atualizados!')
-                    window.open('listar_usuarios.php', '_self')
-                </script>";
-        } else {
-            echo "<script>
-                    alert('Dados iguais aos já cadastrados!')
-                    window.open('listar_usuarios.php', '_self')
-                </script>";
-        }
-    } else if(isset($_POST['cancelar'])) {
-        echo "<script>
-                window.open('listar_usuarios.php', '_self')
-            </script>";
-    }
+        if($atualiza->rowCount())
+            echo "<script>usuarioAtualizado()</script>";
+        else
+            echo "<script>usuarioDadosIguais()</script>";
+        
+    } else if(isset($_POST['cancelar']))
+        echo "<script>window.open('lista_usuario.php', '_self')</script>";
 
     include 'frontend/rodape.html';
 ?>

@@ -75,3 +75,33 @@ function limparCheckboxFeriados() {
 
     mostrarCheckboxFeriados()
 }
+
+function usuarioCadastrado() {
+    alert('Usuário Cadastrado!')
+    window.open('cadastra_usuario.php', '_self')
+}
+
+function usuarioDeletado() {
+    alert('Usuário Deletado!')
+    window.open('lista_usuario.php', '_self')
+}
+
+function usuarioNaoEncontrado() {
+    alert('Usuário não encontrado!')
+    window.open('lista_usuario.php', '_self')
+}
+
+function usuarioAtualizado() {
+    alert('Dados do Usuário Atualizados!')
+    window.open('lista_usuario.php', '_self')
+}
+
+function usuarioDadosIguais() {
+    alert('Dados iguais aos já cadastrados!')
+    window.open('lista_usuario.php', '_self')
+}
+
+function usuarioNaoCadastradoPDF(funcao) {
+    alert('Nenhum Usuário '+ funcao + ' Cadastrado até o momento!')
+    window.close()
+}
