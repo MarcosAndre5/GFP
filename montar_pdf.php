@@ -14,10 +14,10 @@
             </thead>
             <tbody>
                 <tr class='legenda'>
-                    <td class='colunaData'>DATA</td>
-                    <td class='colunaEntrada'>ENTRADA</td>
-                    <td class='colunaAssinatura'>ASSINATURA</td>
-                    <td class='colunaSaida'>SAÍDA</td>
+                    <th class='colunaData'>DATA</th>
+                    <th class='colunaEntrada'>ENTRADA</th>
+                    <th class='colunaAssinatura'>ASSINATURA</th>
+                    <th class='colunaSaida'>SAÍDA</th>
                 </tr>
                 <?php
                     $sabado = false;

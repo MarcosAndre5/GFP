@@ -71,7 +71,7 @@
             echo "<script>usuarioDadosIguais()</script>";
         
     } else if(isset($_POST['cancelar']))
-        echo "<script>window.open('lista_usuario.php', '_self')</script>";
+        echo "<script>abrirListaUsuarios()</script>";
 
     include 'frontend/rodape.html';
 ?>
