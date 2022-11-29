@@ -50,16 +50,16 @@
             break;
     }
 
-    if($funcao == true){
+    if($funcao == true)
         $nomes = $consulta->listarNomesUsuariosFuncao($funcao);
-    } else if($arquivo == true) {
-        $conteudo = fopen('nomes.csv', 'r');
+    else if($arquivo == true) {
         $i = 0;
+        $conteudo = fopen('nomes.csv', 'r');
         
         while ($linha = fgetcsv($conteudo, 1000)) {
-            if($i > 0) {
+            if($i > 0)
                 $nomes[$i-1] = $linha[0];
-            }
+
             $i++;
         }
         fclose($conteudo);
