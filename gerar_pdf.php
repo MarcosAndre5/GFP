@@ -22,7 +22,6 @@
     if($anoBissexto)
         $qtdDiasMes[2] += 1;
 
-    
     switch ($mes) {
         case 1: $nomeMes = "Janeiro";
             break;
@@ -56,7 +55,7 @@
         $i = 0;
         $conteudo = fopen('nomes.csv', 'r');
         
-        while ($linha = fgetcsv($conteudo, 1000)) {
+        while ($linha = fgetcsv($conteudo, 500)) {
             if($i > 0)
                 $nomes[$i-1] = $linha[0];
 

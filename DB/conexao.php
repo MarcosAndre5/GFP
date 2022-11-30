@@ -48,7 +48,7 @@
 
         public function listarUsuariosFuncao($funcao) {
             try {
-                $select = $this->pdo->query("SELECT * FROM usuarios WHERE funcao = '$funcao'");
+                $select = $this->pdo->query("SELECT * FROM usuarios WHERE funcao = '$funcao' ORDER BY nome");
                 $usuarios = $select->fetchAll(PDO::FETCH_ASSOC);
             } catch(PDOException $e) {
                 echo 'DB Erro: '.$e->getMessage();
@@ -58,7 +58,7 @@
 
         public function listarNomesUsuariosFuncao($funcao) {
             try {
-                $select = $this->pdo->query("SELECT nome FROM usuarios WHERE funcao = '$funcao'");
+                $select = $this->pdo->query("SELECT nome FROM usuarios WHERE funcao = '$funcao' ORDER BY nome");
                 $nomes = $select->fetchAll(PDO::FETCH_ASSOC);
             } catch(PDOException $e) {
                 echo 'DB Erro: '.$e->getMessage();

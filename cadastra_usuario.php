@@ -3,6 +3,19 @@
     include 'DB/conexao.php';
 
     $consulta = new Consulta();
+
+    if(isset($_POST["cadastrar"])){
+        $nome = $_POST["nome"];
+        $funcao = $_POST["funcao"];
+        $condicao = $_POST["condicao"];
+        $email = $_POST["email"];
+        $telefone = $_POST["telefone"];
+
+        $cadastro = $consulta->cadastrarUsuario($nome, $funcao, $condicao, $email, $telefone); 
+
+        if($cadastro->rowCount())
+            echo "<script>usuarioCadastrado()</script>";
+    }
 ?>
 
 <h2>Adicionar Usuário</h2>
@@ -37,19 +50,4 @@
 </form>
 <script>$("#telefone").mask("(99) 99999-9999");</script>
 
-<?php
-    if(isset($_POST["cadastrar"])){
-        $nome = $_POST["nome"];
-        $funcao = $_POST["funcao"];
-        $condicao = $_POST["condicao"];
-        $email = $_POST["email"];
-        $telefone = $_POST["telefone"];
-
-        $cadastro = $consulta->cadastrarUsuario($nome, $funcao, $condicao, $email, $telefone); 
-
-        if($cadastro->rowCount())
-            echo "<script>usuarioCadastrado()</script>";
-    }
-
-    include 'frontend/rodape.html';
-?>
+<?php include 'frontend/rodape.html'; ?>

@@ -21,6 +21,23 @@
 
         echo "<h2>Editar de Usuários $nome</h2>";
     }
+
+    if(isset($_POST["atualizar"])) {
+        $nome = $_POST["nome"];
+        $funcao = $_POST["funcao"];
+        $condicao = $_POST["condicao"];
+        $email = $_POST["email"];
+        $telefone = $_POST["telefone"];
+
+        $atualiza = $consulta->atualizarUsuario($id, $nome, $funcao, $condicao, $email, $telefone);
+
+        if($atualiza->rowCount())
+            echo "<script>usuarioAtualizado()</script>";
+        else
+            echo "<script>usuarioDadosIguais()</script>";
+        
+    } else if(isset($_POST['cancelar']))
+        echo "<script>abrirListaUsuarios()</script>";
 ?>
 
 <form method="POST" autocomplete="off">
@@ -55,23 +72,4 @@
 </form>
 <script>$("#telefone").mask("(99) 99999-9999");</script>
 
-<?php
-    if(isset($_POST["atualizar"])) {
-        $nome = $_POST["nome"];
-        $funcao = $_POST["funcao"];
-        $condicao = $_POST["condicao"];
-        $email = $_POST["email"];
-        $telefone = $_POST["telefone"];
-
-        $atualiza = $consulta->atualizarUsuario($id, $nome, $funcao, $condicao, $email, $telefone);
-
-        if($atualiza->rowCount())
-            echo "<script>usuarioAtualizado()</script>";
-        else
-            echo "<script>usuarioDadosIguais()</script>";
-        
-    } else if(isset($_POST['cancelar']))
-        echo "<script>abrirListaUsuarios()</script>";
-
-    include 'frontend/rodape.html';
-?>
+<?php include 'frontend/rodape.html'; ?>
