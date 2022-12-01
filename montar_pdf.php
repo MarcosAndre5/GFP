@@ -22,9 +22,9 @@
                 <?php
                     $sabado = false;
 
-                    for($dia = 1; $dia <= $qtdDiasMes[$mes]; $dia++){
+                    for($dia = 1; $dia <= $qtdDiasMes; $dia++){
                         $data = sprintf("%02d/%02d", $dia, $mes);
-                        $feriado = isset($_POST['feriado'.$dia]);
+                        $feriado = isset($_POST[$dia]);
 
                         if($dia % 7 == $primeiroDiaMes) {
                             echo "<tr class='naoLetivo'>
@@ -40,11 +40,17 @@
                                 <td class='colunaAssinatura'>DOMINGO</td>
                                 <td class='colunaSaida'></td>";
                             $sabado = false;
-                        } else if ($feriado == true)
+                        } else if($feriado == true && $mes < 12)
                             echo "<tr class='naoLetivo'>
                                 <td class='colunaData'>$data</td>
                                 <td class='colunaEntrada'></td>
                                 <td class='colunaAssinatura'>FERIADO</td>
+                                <td class='colunaSaida'></td>";
+                        else if($feriado == true && $mes == 12)
+                            echo "<tr class='naoLetivo'>
+                                <td class='colunaData'>$data</td>
+                                <td class='colunaEntrada'></td>
+                                <td class='colunaAssinatura'>RECESSO NATALINO</td>
                                 <td class='colunaSaida'></td>";
                         else
                             echo "<tr>

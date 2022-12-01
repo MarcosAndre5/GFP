@@ -50,7 +50,7 @@
         else
             echo "<tr>
                     <td colspan='7'>
-                        Nenhum Servidor cadastrado.
+                        Nenhum $funcao cadastrado.
                     </td>
                 </tr>";
         echo "</table>";

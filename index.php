@@ -52,11 +52,6 @@
     <label>Marque os feriados do mês:</label>
     <div id="escolhaferiados"></div>
     <br>
-    <div id="divbissexto" hidden>
-        <label>O ano é bissexto?</label>
-        <input name="bissexto" id="bissexto" type="checkbox" value="1" onchange="limparCheckboxFeriados()">
-    </div>
-    <br>
     <input type="submit" value="Gerar Folha de Pontos">
 </form>
 
