@@ -14,13 +14,9 @@
     $mes = $_POST['mes'];
     $arquivo = isset($_POST['arquivo']);
     $primeiroDiaMes = (6 - $_POST['dia']);
-    $anoBissexto = isset($_POST['bissexto']);
     $nomes[] = isset($_POST['nome']) ? $_POST['nome'] : "";
-    $qtdDiasMes = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    $funcao = isset($_POST['tipo_usuario']) ? $_POST['tipo_usuario'] : false;
-
-    if($anoBissexto)
-        $qtdDiasMes[2] += 1;
+    $qtdDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, date('Y'));
+    $funcao = isset($_POST['tipo_usuario']) ? $_POST['tipo_usuario'] : 'UERN';
 
     switch ($mes) {
         case 1: $nomeMes = "Janeiro";
@@ -49,7 +45,7 @@
             break;
     }
 
-    if($funcao == true)
+    if($funcao == 'Servidor' || $funcao == 'Terceirizado' || $funcao == 'Estagiario')
         $nomes = $consulta->listarNomesUsuariosFuncao($funcao);
     else if($arquivo == true) {
         $i = 0;

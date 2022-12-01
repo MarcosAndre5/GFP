@@ -1,3 +1,7 @@
+function abrirListaUsuarios() {
+    window.open('lista_usuario.php', '_self')
+}
+
 function usuarioCadastrado() {
     alert('Usuário Cadastrado!')
     window.open('cadastra_usuario.php', '_self')
@@ -23,42 +27,20 @@ function usuarioDadosIguais() {
     abrirListaUsuarios()
 }
 
-function abrirListaUsuarios() {
-    window.open('lista_usuario.php', '_self')
-}
-
-function limparCheckboxFeriados() {
-    document.getElementById("escolhaferiados").innerHTML = ""
-
-    mostrarCheckboxFeriados()
-}
-
 function mostrarCheckboxFeriados() {
+    var date = new Date();
     var selectBox = document.getElementById("mes")
     var mes = selectBox.options[selectBox.selectedIndex].value
-    var checkboxBissexto = document.getElementById("bissexto").checked
-    qtdDiasMes = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    var qtdDiasMes = new Date(date.getFullYear(), mes, 0).getDate()
 
-    if(checkboxBissexto == true)
-        qtdDiasMes[2] += 1
-
-    if(mes == 2)
-        document.getElementById("divbissexto").hidden = false
-    else 
-        document.getElementById("divbissexto").hidden = true
-
-    document.getElementById("escolhaferiados").innerHTML = ""
-
-    for(var i = 1; i <= qtdDiasMes[mes]; i++) {
-        if(i < 10)
-            document.getElementById('escolhaferiados').innerHTML += "<label>&emsp;"+i+"</label>"+
-                "<input type='checkbox' id='feriado' name='feriado"+i+"' value='"+i+"'>"
-        else
-            document.getElementById('escolhaferiados').innerHTML += "<label>&ensp;"+i+"</label>"+
-                "<input type='checkbox' id='feriado' name='feriado"+i+"' value='"+i+"'>"
-
-        if(i % 10 == 0)
-            document.getElementById('escolhaferiados').innerHTML += "<br>"
+    document.getElementById('escolhaferiados').innerHTML = ""
+    
+    for(var i = 1; i <= qtdDiasMes; i++) {
+        var espaco = (i < 10) ? "&emsp;" : "&ensp;"
+        var quebraLinha = (i % 10 == 0) ? "<br>" : ""
+        
+        document.getElementById('escolhaferiados').innerHTML += "<label>" + espaco + i +
+            "</label><input type='checkbox' name=" + i + " value='1'>" + quebraLinha
     }
 }
 
