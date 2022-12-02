@@ -28,27 +28,27 @@ function usuarioDadosIguais() {
 }
 
 function mostrarCheckboxFeriados() {
-    var date = new Date();
-    var selectBox = document.getElementById("mes")
-    var mes = selectBox.options[selectBox.selectedIndex].value
-    var qtdDiasMes = new Date(date.getFullYear(), mes, 0).getDate()
+    date = new Date();
+    selectBox = document.getElementById('mes')
+    mes = selectBox.options[selectBox.selectedIndex].value
+    qtdDiasMes = (mes != '') ? new Date(date.getFullYear(), mes, 0).getDate() : 0
 
-    document.getElementById('escolhaferiados').innerHTML = ""
+    document.getElementById('escolhaferiados').innerHTML = ''
     
-    for(var i = 1; i <= qtdDiasMes; i++) {
-        var espaco = (i < 10) ? "&emsp;" : "&ensp;"
-        var quebraLinha = (i % 10 == 0) ? "<br>" : ""
+    for(i = 1; i <= qtdDiasMes; i++) {
+        espaco = (i < 10) ? '&emsp;' : '&ensp;'
+        quebraLinha = (i % 10 == 0) ? '<br>' : ''
         
-        document.getElementById('escolhaferiados').innerHTML += "<label>" + espaco + i +
+        document.getElementById('escolhaferiados').innerHTML += '<label>' + espaco + i +
             "</label><input type='checkbox' name=" + i + " value='1'>" + quebraLinha
     }
 }
 
 function ativaDesativaBotao() {
-    var servidor = document.getElementById("servidor").checked
-    var terceirizado = document.getElementById("terceirizado").checked
-    var estagiario = document.getElementById("estagiario").checked
-    var arquivo = document.getElementById("arquivo").checked
+    servidor = document.getElementById("servidor").checked
+    terceirizado = document.getElementById("terceirizado").checked
+    estagiario = document.getElementById("estagiario").checked
+    arquivo = document.getElementById("arquivo").checked
 
     if(servidor == true) {
         document.getElementById("nome").value = ""
