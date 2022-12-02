@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang='pt-br'>
     <head>
-        <title>Folha de <?= $nomeMes ?> Gerada</title>
+        <title>Folha de <?= $nomeMes[$mes] ?> Gerada</title>
         <link rel='stylesheet' type='text/css' href='frontend/estilo.css'>
     </head>
     <body>
-        <h3>FOLHA DE PONTO DE <?= strtoupper($nomeMes) ?></h3>
+        <h3>FOLHA DE PONTO DE <?= strtoupper($nomeMes[$mes]) ?></h3>
         <table>
             <thead>
                 <tr>
@@ -30,7 +30,7 @@
                             echo "<tr class='naoLetivo'>
                                 <td class='colunaData'>$data</td>
                                 <td class='colunaEntrada'></td>
-                                <td class='colunaAssinatura'>SABADO</td>
+                                <td class='colunaAssinatura'>SÁBADO</td>
                                 <td class='colunaSaida'></td>";
                             $sabado = true;
                         } else if($dia % 7 == $primeiroDiaMes + 1 || $sabado == true) {

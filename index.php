@@ -40,13 +40,13 @@
     <label>Primeiro dia do mês será num(a):</label>
     <select name="dia" required>
         <option value="" selected>Selecionar...</option>
-        <option value="0">Segunda-feira</option>
-        <option value="1">Terça-feira</option>
-        <option value="2">Quarta-feira</option>
+        <option value="0">Domingo</option>
+        <option value="1">Sábado</option>
+        <option value="2">Sexta-feira</option>
         <option value="3">Quinta-feira</option>
-        <option value="4">Sexta-feira</option>
-        <option value="5">Sábado</option>
-        <option value="6">Domingo</option>
+        <option value="4">Quarta-feira</option>
+        <option value="5">Terça-feira</option>
+        <option value="6">Segunda-feira</option>
     </select>
     <br><br>
     <label>Marque os feriados do mês:</label>

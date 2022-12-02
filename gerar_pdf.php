@@ -10,48 +10,24 @@
     $dompdf = new Dompdf($options);
     $consulta = new Consulta();
 
-    $nomeMes = "";
     $mes = $_POST['mes'];
+    $primeiroDiaMes = $_POST['dia'];
     $arquivo = isset($_POST['arquivo']);
-    $primeiroDiaMes = (6 - $_POST['dia']);
     $nomes[] = isset($_POST['nome']) ? $_POST['nome'] : "";
     $qtdDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, date('Y'));
     $funcao = isset($_POST['tipo_usuario']) ? $_POST['tipo_usuario'] : 'UERN';
-
-    switch ($mes) {
-        case 1: $nomeMes = "Janeiro";
-            break;
-        case 2: $nomeMes = "Fevereiro";
-            break;
-        case 3: $nomeMes = "Março";
-            break;
-        case 4: $nomeMes = "Abril";
-            break;
-        case 5: $nomeMes = "Maio";
-            break;
-        case 6: $nomeMes = "Junho";
-            break;
-        case 7: $nomeMes = "Julho";
-            break;
-        case 8: $nomeMes = "Agosto";
-            break;
-        case 9: $nomeMes = "Setembro";
-            break;
-        case 10: $nomeMes = "Outubro";
-            break;
-        case 11: $nomeMes = "Novembro";
-            break;
-        case 12: $nomeMes = "Dezembro";
-            break;
-    }
+    $nomeMes = [
+        '', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+        'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
 
     if($funcao == 'Servidor' || $funcao == 'Terceirizado' || $funcao == 'Estagiario')
         $nomes = $consulta->listarNomesUsuariosFuncao($funcao);
     else if($arquivo == true) {
-        $i = 0;
         $conteudo = fopen('nomes.csv', 'r');
         
-        while ($linha = fgetcsv($conteudo, 500)) {
+        $i = 0;
+        while($linha = fgetcsv($conteudo, 500)) {
             if($i > 0)
                 $nomes[$i-1] = $linha[0];
 
@@ -63,21 +39,20 @@
     if(count($nomes) > 0) {    
         ob_start();
     
-        foreach ($nomes as $nome) {
+        foreach($nomes as $nome) {
             if(is_array($nome))
                 $nome = $nome['nome'];
 
             include 'montar_pdf.php';
         }
 
-    
         $dompdf->loadHtml(ob_get_clean());
 
         $dompdf->setPaper('A4');
 
         $dompdf->render();
 
-        $dompdf->stream('Folha_'.$nomeMes.'_'.$funcao.'.pdf', ["Attachment" => false]);
+        $dompdf->stream('Folha_'.$nomeMes[$mes].'_'.$funcao.'.pdf', ["Attachment" => false]);
     } else
         echo "<script>
                 alert('Nenhum Usuário $funcao Cadastrado até o momento!')
