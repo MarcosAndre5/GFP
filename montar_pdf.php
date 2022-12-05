@@ -22,7 +22,7 @@
                 <?php
                     $sabado = false;
 
-                    for($dia = 1; $dia <= $qtdDiasMes; $dia++){
+                    for($dia = 1; $dia <= $qtdDiasMes; $dia++) {
                         $data = sprintf("%02d/%02d", $dia, $mes);
                         $feriado = isset($_POST[$dia]);
 
@@ -58,7 +58,6 @@
                                 <td class='colunaEntrada'>:</td>
                                 <td class='colunaAssinatura'></td>
                                 <td class='colunaSaida'>:</td>";
-
                         echo "</tr>";
                     }
                 ?>

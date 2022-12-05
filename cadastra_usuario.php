@@ -11,7 +11,7 @@
         $email = $_POST["email"];
         $telefone = $_POST["telefone"];
 
-        $cadastro = $consulta->cadastrarUsuario($nome, $funcao, $condicao, $email, $telefone); 
+        $cadastro = $consulta->cadastrarUsuario($nome, $funcao, $condicao, $email, $telefone);
 
         if($cadastro->rowCount())
             echo "<script>usuarioCadastrado()</script>";
