@@ -5,7 +5,7 @@
         private $senhaDB = '';
         private $pdo;
 
-        public function __construct(){
+        public function __construct() {
             try {
                 $this->pdo = new PDO($this->DB, $this->usuarioDB, $this->senhaDB);
                 $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -16,7 +16,7 @@
 
         public function cadastrarUsuario($nome, $funcao, $condicao, $email, $telefone) {
             try {
-                $insert = $this->pdo->query("INSERT INTO usuarios (nome, funcao, condicao, email, telefone) 
+                $insert = $this->pdo->query("INSERT INTO usuarios (nome, funcao, condicao, email, telefone)
                     VALUES('$nome', '$funcao', '$condicao', '$email', '$telefone')");
             } catch(PDOException $e) {
                 echo 'DB Erro: '.$e->getMessage();
@@ -27,7 +27,7 @@
         public function atualizarUsuario($id, $nome, $funcao, $condicao, $email, $telefone) {
             try {
                 $update = $this->pdo->query("UPDATE usuarios SET 
-                        nome = '$nome', funcao = '$funcao', condicao = '$condicao', 
+                        nome = '$nome', funcao = '$funcao', condicao = '$condicao',
                         email = '$email', telefone = '$telefone'
                     WHERE id = '$id'");
             } catch(PDOException $e) {

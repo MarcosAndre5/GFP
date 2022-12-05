@@ -56,7 +56,7 @@ function ativaDesativaBotao() {
         document.getElementById("arquivo").disabled = true
         document.getElementById("terceirizado").disabled = true
         document.getElementById("estagiario").disabled = true
-    } else if(terceirizado == true){
+    } else if(terceirizado == true) {
         document.getElementById("nome").value = ""
         document.getElementById("nome").disabled = true
         document.getElementById("arquivo").disabled = true

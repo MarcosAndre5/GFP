@@ -5,7 +5,7 @@
     function montarlistar($funcao) {
         $consulta = new Consulta();
 
-        $plural = $funcao == 'Servidor' ? 'es' : 's';
+        $plural = ($funcao == 'Servidor') ? 'es' : 's';
 
         echo "<h3>$funcao$plural</h3>
             <table>
@@ -72,10 +72,10 @@
 
 <?php
     montarlistar('Servidor');
-    
+
     montarlistar('Terceirizado');
 
     montarlistar('Estagiario');
-    
+
     include 'frontend/rodape.html';
 ?>

@@ -25,7 +25,7 @@
         $nomes = $consulta->listarNomesUsuariosFuncao($funcao);
     else if($arquivo == true) {
         $conteudo = fopen('nomes.csv', 'r');
-        
+
         $i = 0;
         while($linha = fgetcsv($conteudo, 500)) {
             if($i > 0)
@@ -36,9 +36,9 @@
         fclose($conteudo);
     }
 
-    if(count($nomes) > 0) {    
+    if(count($nomes) > 0) {
         ob_start();
-    
+
         foreach($nomes as $nome) {
             if(is_array($nome))
                 $nome = $nome['nome'];

@@ -8,7 +8,7 @@
         $id = $_GET["editar"];
 
         $usuario = $consulta->buscarUsuario($id);
-            
+
         if($usuario) {
             $id = $usuario['id'];
             $nome = $usuario['nome'];
