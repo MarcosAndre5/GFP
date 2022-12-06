@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang='pt-br'>
     <head>
+        <meta charset="UTF-8">
         <title>Folha de <?= $nomeMes[$mes] ?> Gerada</title>
         <link rel='stylesheet' type='text/css' href='frontend/estilo.css'>
     </head>
     <body>
-        <h3>FOLHA DE PONTO DE <?= strtoupper($nomeMes[$mes]) ?></h3>
+        <h3>FOLHA DE PONTO DE <?= mb_strtoupper($nomeMes[$mes]) ?></h3>
         <table>
             <thead>
                 <tr>

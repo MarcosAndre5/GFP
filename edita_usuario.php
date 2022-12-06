@@ -26,10 +26,13 @@
         $nome = $_POST["nome"];
         $funcao = $_POST["funcao"];
         $condicao = $_POST["condicao"];
-        $email = $_POST["email"];
+        $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
         $telefone = $_POST["telefone"];
 
-        $atualiza = $consulta->atualizarUsuario($id, $nome, $funcao, $condicao, $email, $telefone);
+        if(empty($email))
+            echo "<script>emailInvalido($id)</script>";
+        else
+            $atualiza = $consulta->atualizarUsuario($id, $nome, $funcao, $condicao, $email, $telefone);
 
         if($atualiza->rowCount())
             echo "<script>usuarioAtualizado()</script>";

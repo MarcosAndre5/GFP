@@ -27,6 +27,15 @@ function usuarioDadosIguais() {
     abrirListaUsuarios()
 }
 
+function emailInvalido(id) {
+    alert('E-mail Inválido! Tente Novamente.')
+    
+    if(id == undefined)
+        window.open('cadastra_usuario.php', '_self')
+    else
+        window.open('edita_usuario.php?editar=' + id, '_self')
+}
+
 function mostrarCheckboxFeriados() {
     date = new Date();
     selectBox = document.getElementById('mes')
@@ -35,27 +44,27 @@ function mostrarCheckboxFeriados() {
 
     document.getElementById('escolhaferiados').innerHTML = ''
     
-    for(i = 1; i <= qtdDiasMes; i++) {
-        espaco = (i < 10) ? '&emsp;' : '&ensp;'
-        quebraLinha = (i % 10 == 0) ? '<br>' : ''
+    for(dia = 1; dia <= qtdDiasMes; dia++) {
+        espaco = (dia < 10) ? '&emsp;' : '&ensp;'
+        quebraLinha = (dia % 10 == 0) ? '<br>' : ''
         
-        document.getElementById('escolhaferiados').innerHTML += '<label>' + espaco + i +
-            "</label><input type='checkbox' name=" + i + " value='1'>" + quebraLinha
+        document.getElementById('escolhaferiados').innerHTML += '<label>' + espaco + dia +
+            "</label><input type='checkbox' name=" + dia + " value='1'>" + quebraLinha
     }
 }
 
 function ativaDesativaBotao() {
-    servidor = document.getElementById("servidor").checked
-    terceirizado = document.getElementById("terceirizado").checked
-    estagiario = document.getElementById("estagiario").checked
     arquivo = document.getElementById("arquivo").checked
+    servidor = document.getElementById("servidor").checked
+    estagiario = document.getElementById("estagiario").checked
+    terceirizado = document.getElementById("terceirizado").checked
 
     if(servidor == true) {
         document.getElementById("nome").value = ""
         document.getElementById("nome").disabled = true
         document.getElementById("arquivo").disabled = true
-        document.getElementById("terceirizado").disabled = true
         document.getElementById("estagiario").disabled = true
+        document.getElementById("terceirizado").disabled = true
     } else if(terceirizado == true) {
         document.getElementById("nome").value = ""
         document.getElementById("nome").disabled = true
@@ -72,13 +81,13 @@ function ativaDesativaBotao() {
         document.getElementById("nome").value = ""
         document.getElementById("nome").disabled = true
         document.getElementById("servidor").disabled = true
-        document.getElementById("terceirizado").disabled = true
         document.getElementById("estagiario").disabled = true
+        document.getElementById("terceirizado").disabled = true
     } else {
         document.getElementById("nome").disabled = false
         document.getElementById("arquivo").disabled = false
         document.getElementById("servidor").disabled = false
-        document.getElementById("terceirizado").disabled = false
         document.getElementById("estagiario").disabled = false
+        document.getElementById("terceirizado").disabled = false
     }
 }
