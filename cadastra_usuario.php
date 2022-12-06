@@ -8,10 +8,13 @@
         $nome = $_POST["nome"];
         $funcao = $_POST["funcao"];
         $condicao = $_POST["condicao"];
-        $email = $_POST["email"];
+        $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
         $telefone = $_POST["telefone"];
 
-        $cadastro = $consulta->cadastrarUsuario($nome, $funcao, $condicao, $email, $telefone);
+        if(empty($email))
+            echo '<script>emailInvalido()</script>';
+        else
+            $cadastro = $consulta->cadastrarUsuario($nome, $funcao, $condicao, $email, $telefone);
 
         if($cadastro->rowCount())
             echo "<script>usuarioCadastrado()</script>";

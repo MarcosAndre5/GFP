@@ -16,9 +16,7 @@ th, td {
     height: 2.5%;
 }
 
-input[type=text] {
-    width: 40%;
-}
+input[type = text] { width: 40%; }
 
 footer { text-align: center; }
 
