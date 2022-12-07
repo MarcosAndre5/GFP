@@ -11,7 +11,6 @@
             <table>
                 <tr class='legenda'>
                     <td>Nome</td>
-                    <td>Função</td>
                     <td>Condição</td>
                     <td>Email</td>
                     <td>Telefone</td>
@@ -31,7 +30,6 @@
 
                 echo "<tr>
                         <td>$nome</td>
-                        <td>$funcao</td>
                         <td>$condicao</td>
                         <td>$email</td>
                         <td>$telefone</td>
@@ -49,7 +47,7 @@
             }
         else
             echo "<tr>
-                    <td colspan='7'>
+                    <td colspan='5'>
                         Nenhum $funcao cadastrado.
                     </td>
                 </tr>";

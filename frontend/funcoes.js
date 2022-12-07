@@ -2,9 +2,13 @@ function abrirListaUsuarios() {
     window.open('lista_usuario.php', '_self')
 }
 
+function abrirCadastroUsuario() {
+    window.open('cadastra_usuario.php', '_self')
+}
+
 function usuarioCadastrado() {
     alert('Usuário Cadastrado!')
-    window.open('cadastra_usuario.php', '_self')
+    abrirCadastroUsuario()
 }
 
 function usuarioDeletado() {
@@ -27,13 +31,8 @@ function usuarioDadosIguais() {
     abrirListaUsuarios()
 }
 
-function emailInvalido(id) {
-    alert('E-mail Inválido! Tente Novamente.')
-    
-    if(id == undefined)
-        window.open('cadastra_usuario.php', '_self')
-    else
-        window.open('edita_usuario.php?editar=' + id, '_self')
+function emailInvalido() {
+    alert('E-mail Inválido!')
 }
 
 function mostrarCheckboxFeriados() {
