@@ -30,9 +30,9 @@
         $telefone = $_POST["telefone"];
 
         if(empty($email))
-            echo "<script>emailInvalido($id)</script>";
-        else
-            $atualiza = $consulta->atualizarUsuario($id, $nome, $funcao, $condicao, $email, $telefone);
+            echo "<script>emailInvalido()</script>";
+        
+        $atualiza = $consulta->atualizarUsuario($id, $nome, $funcao, $condicao, $email, $telefone);
 
         if($atualiza->rowCount())
             echo "<script>usuarioAtualizado()</script>";
