@@ -23,7 +23,7 @@
 
 <h2>Adicionar Usuário</h2>
 <hr>
-<form action="cadastra_usuario.php" method="POST" autocomplete="off">
+<form method="POST" autocomplete="off">
     <label>Nome:</label>
     <input type="text" name="nome" placeholder="Digite o Nome do Usuário..." pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
     <br><br>

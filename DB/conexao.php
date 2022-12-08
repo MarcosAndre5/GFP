@@ -46,6 +46,16 @@
             return $usuario;
         }
 
+        public function buscarUsuarioLogin($username, $senha) {
+            try {
+                $select = $this->pdo->query("SELECT * FROM login WHERE usuario = '$username' AND senha = '$senha'");
+                $usuario = $select->fetch(PDO::FETCH_ASSOC);
+            } catch(PDOException $e) {
+                echo 'DB Erro: '.$e->getMessage();
+            }
+            return $usuario;
+        }
+
         public function listarUsuariosFuncao($funcao) {
             try {
                 $select = $this->pdo->query("SELECT * FROM usuarios WHERE funcao = '$funcao' ORDER BY nome");
