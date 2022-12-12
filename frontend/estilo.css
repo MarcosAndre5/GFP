@@ -18,9 +18,11 @@ th, td {
     height: 2.5%;
 }
 
-input[type = text] { width: 40%; }
-
 footer { text-align: center; }
+
+.nomeEmail { width: 40%; }
+
+.msgErro { color:red; }
 
 .legenda { font-weight: bold; }
 

@@ -1,7 +1,22 @@
 <?php
 	session_start();
+	ob_start();
 	include 'DB/conexao.php';
+
+	if(isset($_POST['entrar'])) {
+		$consulta = new Consulta();
+		$usuario = $_POST['usuario'];
+		$senha = $_POST['senha'];
+
+		$busca = $consulta->buscarUsuarioLogin($usuario, $senha);
+
+		if($busca == true)
+			header('Location: index.php');
+		else
+			$_SESSION['mensagemErro'] = "<label class='msgErro'>Usuário ou Senha Inválida!</label>";
+	}
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -15,23 +30,6 @@
 		<h1>Login - GFP</h1>
 
 		<?php
-			$dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-			
-			$usuario = isset($dados['usuario']) ? $dados['usuario'] : 0;
-			$senha = isset($dados['senha']) ? $dados['senha'] : 0;
-			$btEntrar = isset($dados['entrar']);
-
-			if($btEntrar) {
-				$consulta = new Consulta();
-				$busca = $consulta->buscarUsuarioLogin($usuario, $senha);
-
-				if($busca) {
-					echo "<label>Logado</label>";
-				} else {
-					$_SESSION['mensagemErro'] = "<p>Usuário ou Senha Inválida!</p>";
-				}
-			}
-
 			if(isset($_SESSION['mensagemErro'])) {
 				echo $_SESSION['mensagemErro'];
 				unset($_SESSION['mensagemErro']);

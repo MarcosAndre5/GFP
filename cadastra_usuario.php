@@ -25,7 +25,7 @@
 <hr>
 <form method="POST" autocomplete="off">
     <label>Nome:</label>
-    <input type="text" name="nome" placeholder="Digite o Nome do Usuário..." pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
+    <input class="nomeEmail" type="text" name="nome" placeholder="Digite o Nome do Usuário..." pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
     <br><br>
     <label>Função:</label>
     <select name="funcao" required>
@@ -44,7 +44,7 @@
     </select>
     <br><br>
     <label>Email:</label>
-    <input type="text" name="email" placeholder="Digite o Email do Usuário...">
+    <input class="nomeEmail" type="text" name="email" placeholder="Digite o Email do Usuário...">
     <br><br>
     <label>Telefone:</label>
     <input type="tel" name="telefone" id="telefone" maxlength="15" placeholder="Digite o Telefone do Usuário...">
