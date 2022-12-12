@@ -18,7 +18,7 @@
     <input name="arquivo" id="arquivo" type="checkbox" value="1" onchange="ativaDesativaBotao()">
     <br><br>
     <label>Gerar folha única para:</label>
-    <input name="nome" id="nome" maxlength="40" type="text" placeholder="Digite o Nome do Servidor..." autocomplete="off" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required onchange="ativaDesativaBotao()">
+    <input name="nome" class="nomeEmail" id="nome" maxlength="40" type="text" placeholder="Digite o Nome do Servidor..." autocomplete="off" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required onchange="ativaDesativaBotao()">
     <br><br>
     <label>Mês da Folha:</label> 
     <select name="mes" id="mes" onchange="mostrarCheckboxFeriados()" required>

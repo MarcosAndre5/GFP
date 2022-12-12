@@ -46,7 +46,7 @@
 <form method="POST" autocomplete="off">
     <hr>
     <label>Nome:</label>
-    <input type="text" name="nome" value="<?= $nome ?>" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
+    <input class="nomeEmail" type="text" name="nome" value="<?= $nome ?>" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
     <br><br>
     <label>Função:</label>
     <select name="funcao">
@@ -65,7 +65,7 @@
     </select>
     <br><br>
     <label>Email:</label>
-    <input type="text" name="email" value="<?= $email ?>">
+    <input class="nomeEmail" type="text" name="email" value="<?= $email ?>">
     <br><br>
     <label>Telefone:</label>
     <input type="tel" name="telefone" id="telefone" maxlength="15" value="<?= $telefone ?>">
