@@ -1,19 +1,21 @@
 <?php
 	session_start();
 	ob_start();
+
 	include 'DB/conexao.php';
 
 	if(isset($_POST['entrar'])) {
-		$consulta = new Consulta();
 		$usuario = $_POST['usuario'];
 		$senha = $_POST['senha'];
+		$consulta = new Consulta();
 
 		$busca = $consulta->buscarUsuarioLogin($usuario, $senha);
 
-		if($busca == true)
+		if($busca == true){
+			$_SESSION['nomeUsuario'] = $usuario;
 			header('Location: index.php');
-		else
-			$_SESSION['mensagemErro'] = "<label class='msgErro'>Usuário ou Senha Inválida!</label>";
+		} else
+			$_SESSION['mensagemErro'] = "<p class='msgErro'>Usuário ou Senha Inválida!</p>";
 	}
 ?>
 
@@ -36,12 +38,12 @@
 			}
 		?>
 
-		<form method="POST" autocomplete="off">
+		<form class="login" method="POST" autocomplete="off">
     	<label>E-mail:</label>
-	    <input type="text" name="usuario" placeholder="Digite o E-mail do Usuário..." required>
+	    <input type="text" name="usuario" placeholder="Digite o E-mail do Usuário..." value='<?php if(isset($_POST['usuario'])) echo $_POST['usuario'] ?>' required>
 	    <br><br>
 	    <label>Senha:</label>
-	    <input type="password" name="senha" placeholder="Digite a Senha do Usuário..." required>
+	    <input type="password" name="senha" placeholder="Digite a Senha do Usuário..." value='<?php if(isset($_POST['senha'])) echo $_POST['senha'] ?>' required>
 	    <br><br>
 	    <input type="submit" name="entrar" value="Entrar">
 	</form>

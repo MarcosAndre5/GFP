@@ -1,4 +1,12 @@
 <?php
+    session_start();
+    ob_start();
+
+    if(isset($_SESSION['nomeUsuario']) == false) {
+        $_SESSION['mensagemErro'] = "<p class='msgErro'>Necessário fazer o login!</p>";
+        header('Location: login.php');
+    }
+
     include 'frontend/cabecalho.html';
     include 'DB/conexao.php';
 
