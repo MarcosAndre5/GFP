@@ -18,11 +18,21 @@ th, td {
     height: 2.5%;
 }
 
-footer { text-align: center; }
+footer, .login { text-align: center; }
+
+.sair { text-align: right;  }
 
 .nomeEmail { width: 40%; }
 
-.msgErro { color:red; }
+.msgErro {
+    color: red;
+    text-align: center;
+}
+
+.msgSucesso {
+    color: green;
+    text-align: center;
+}
 
 .legenda { font-weight: bold; }
 
