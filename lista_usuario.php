@@ -3,7 +3,7 @@
     ob_start();
 
     if(isset($_SESSION['nomeUsuario']) == false) {
-        $_SESSION['mensagemErro'] = "<p class='msgErro'>Necessário fazer o login!</p>";
+        $_SESSION['mensagem'] = "<p class='msgErro'>Necessário fazer o login!</p>";
         header('Location: login.php');
     }
 
@@ -69,7 +69,7 @@
         $delete = $consulta->deletarUsuario($id);
 
         if($delete->rowCount())
-            echo "<script>usuarioDeletado()</script>";
+            $_SESSION['mensagem'] = "<p class='msgSucesso'>Usuário deletado com sucesso!</p>";
     }
 ?>
 
@@ -77,11 +77,15 @@
 <hr>
 
 <?php
-    montarlistar('Servidor');
+if(isset($_SESSION['mensagem'])) {
+    echo $_SESSION['mensagem'];
+    unset($_SESSION['mensagem']);
+}
 
-    montarlistar('Terceirizado');
+montarlistar('Servidor');
 
-    montarlistar('Estagiario');
+montarlistar('Terceirizado');
 
-    include 'frontend/rodape.html';
-?>
+montarlistar('Estagiario');
+
+include 'frontend/rodape.html';

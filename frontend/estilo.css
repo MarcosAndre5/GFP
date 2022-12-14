@@ -25,12 +25,14 @@ footer, .login { text-align: center; }
 .nomeEmail { width: 40%; }
 
 .msgErro {
-    color: red;
+    background-color: red;
+    color: white;
     text-align: center;
 }
 
 .msgSucesso {
-    color: green;
+    background-color: green;
+    color: white;
     text-align: center;
 }
 

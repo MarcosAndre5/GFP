@@ -53,7 +53,7 @@ Class Consulta {
 
     public function buscarUsuario($id) {
         try {
-            $select = $this->pdo->query("SELECT * FROM usuarios WHERE id = '$id'");
+            $select = $this->pdo->query("SELECT * FROM usuarios WHERE id = '$id' LIMIT 1");
             $usuario = $select->fetch(PDO::FETCH_ASSOC);
         } catch(PDOException $e) {
             echo 'DB Erro: '.$e->getMessage();

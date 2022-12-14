@@ -3,7 +3,7 @@
     ob_start();
 
     if(isset($_SESSION['nomeUsuario']) == false) {
-        $_SESSION['mensagemErro'] = "<p class='msgErro'>Necessário fazer o login!</p>";
+        $_SESSION['mensagem'] = "<p class='msgErro'>Necessário fazer o login!</p>";
         header('Location: login.php');
     }
 
