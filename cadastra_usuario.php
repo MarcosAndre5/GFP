@@ -3,7 +3,7 @@
     ob_start();
 
     if(isset($_SESSION['nomeUsuario']) == false) {
-        $_SESSION['mensagemErro'] = "<p class='msgErro'>Necessário fazer o login!</p>";
+        $_SESSION['mensagem'] = "<p class='msgErro'>Necessário fazer o login!</p>";
         header('Location: login.php');
     }
 
@@ -16,21 +16,28 @@
         $nome = $_POST["nome"];
         $funcao = $_POST["funcao"];
         $condicao = $_POST["condicao"];
-        $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
+        $email = $_POST["email"];
         $telefone = $_POST["telefone"];
 
-        if(empty($email))
-            echo '<script>emailInvalido()</script>';
-        else
-            $cadastro = $consulta->cadastrarUsuario($nome, $funcao, $condicao, $email, $telefone);
+        $cadastro = $consulta->cadastrarUsuario($nome, $funcao, $condicao, $email, $telefone);
 
-        if($cadastro->rowCount())
-            echo "<script>usuarioCadastrado()</script>";
+        if($cadastro->rowCount() > 0)
+            $_SESSION['mensagem'] = "<p class='msgSucesso'>Usuário cadastrado com sucesso!</p>";
+        else
+            $_SESSION['mensagem'] = "<p class='msgErro'>Não foi possível cadastrar o usuário!</p>";
     }
 ?>
 
 <h2>Adicionar Usuário</h2>
 <hr>
+
+<?php
+    if(isset($_SESSION['mensagem'])) {
+        echo $_SESSION['mensagem'];
+        unset($_SESSION['mensagem']);
+    }
+?>
+
 <form method="POST" autocomplete="off">
     <label>Nome:</label>
     <input class="nomeEmail" type="text" name="nome" placeholder="Digite o Nome do Usuário..." pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>

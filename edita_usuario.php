@@ -3,7 +3,7 @@
     ob_start();
 
     if(isset($_SESSION['nomeUsuario']) == false) {
-        $_SESSION['mensagemErro'] = "<p class='msgErro'>Necessário fazer o login!</p>";
+        $_SESSION['mensagem'] = "<p class='msgErro'>Necessário fazer o login!</p>";
         header('Location: login.php');
     }
 
@@ -24,35 +24,37 @@
             $condicao = $usuario['condicao'];
             $email = $usuario['email'];
             $telefone = $usuario['telefone'];
-        } else
-            echo "<script>usuarioNaoEncontrado()</script>";
+        } else {
+            die("<p class='msgErro'>Usuário não encontrado!</p>");
+        }
 
-        echo "<h2>Editar de Usuários $nome</h2>";
+        echo "<h2>Editar de Usuários $nome</h2><hr>";
     }
 
     if(isset($_POST["atualizar"])) {
         $nome = $_POST["nome"];
         $funcao = $_POST["funcao"];
         $condicao = $_POST["condicao"];
-        $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+        $email = $_POST['email'];
         $telefone = $_POST["telefone"];
 
-        if(empty($email))
-            echo "<script>emailInvalido()</script>";
-        
         $atualiza = $consulta->atualizarUsuario($id, $nome, $funcao, $condicao, $email, $telefone);
 
-        if($atualiza->rowCount())
-            echo "<script>usuarioAtualizado()</script>";
+        if($atualiza->rowCount() > 0)
+            $_SESSION['mensagem'] = "<p class='msgSucesso'>Usuário cadastrado com sucesso!</p>";
         else
-            echo "<script>usuarioDadosIguais()</script>";
-        
+            $_SESSION['mensagem'] = "<p class='msgSucesso'>Dados de usuário iguais aos já cadastrados!</p>";
+
     } else if(isset($_POST['cancelar']))
-        echo "<script>abrirListaUsuarios()</script>";
+        header('Location: lista_usuario.php');
+
+    if(isset($_SESSION['mensagem'])) {
+        echo $_SESSION['mensagem'];
+        unset($_SESSION['mensagem']);
+    }
 ?>
 
 <form method="POST" autocomplete="off">
-    <hr>
     <label>Nome:</label>
     <input class="nomeEmail" type="text" name="nome" value="<?= $nome ?>" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
     <br><br>
@@ -79,7 +81,7 @@
     <input type="tel" name="telefone" id="telefone" maxlength="15" value="<?= $telefone ?>">
     <br><br>
     <input type="submit" name="atualizar" value="Atualizar Usuário">
-    <input type='submit' name='cancelar' value='Cancelar'>
+    <input type='submit' name='cancelar' value='Retornar para Lista de Usuários'>
 </form>
 <script>$("#telefone").mask("(99) 99999-9999");</script>
 
