@@ -7,4 +7,4 @@ unset($_SESSION['nomeUsuario']);
 
 $_SESSION['mensagem'] = "<p class='msgSucesso'>Deslogado com Sucesso!</p>";
 
-header('Location: login.php');
+header('Location: index.php');

@@ -4,7 +4,7 @@
 
     if(isset($_SESSION['nomeUsuario']) == false) {
         $_SESSION['mensagem'] = "<p class='msgErro'>Necessário fazer o login!</p>";
-        header('Location: login.php');
+        header('Location: index.php');
     }
 
     include 'frontend/cabecalho.html';
@@ -24,9 +24,8 @@
             $condicao = $usuario['condicao'];
             $email = $usuario['email'];
             $telefone = $usuario['telefone'];
-        } else {
+        } else
             die("<p class='msgErro'>Usuário não encontrado!</p>");
-        }
 
         echo "<h2>Editar de Usuários $nome</h2><hr>";
     }
