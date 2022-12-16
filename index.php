@@ -1,68 +1,50 @@
 <?php
-    session_start();
-    ob_start();
+	session_start();
+	ob_start();
 
-    if(isset($_SESSION['nomeUsuario']) == false) {
-        $_SESSION['mensagem'] = "<p class='msgErro'>Necessário fazer o login!</p>";
-        header('Location: login.php');
-    }
+	include 'DB/conexao.php';
 
-    include 'frontend/cabecalho.html';
+	if(isset($_POST['entrar'])) {
+		$usuario = $_POST['usuario'];
+		$senha = $_POST['senha'];
+		$consulta = new Consulta();
+
+		$busca = $consulta->buscarUsuarioLogin($usuario, $senha);
+
+		if($busca == true){
+			$_SESSION['nomeUsuario'] = $usuario;
+			header('Location: inicio.php');
+		} else
+			$_SESSION['mensagem'] = "<p class='msgErro'>Usuário ou Senha Inválida!</p>";
+	}
 ?>
 
-<h2>Gerar Folha</h2>
-<hr>
-<form action="gerar_pdf.php" method="POST" target="_blank">
-    <label>Gerar folha para: </label>
-    <br>&emsp;
-    <input type="checkbox" id="servidor" name="tipo_usuario" value="Servidor" onchange="ativaDesativaBotao()">
-    <label>Servidores</label>
-    <br>&emsp;
-    <input type="checkbox" id="terceirizado" name="tipo_usuario" value="Terceirizado" onchange="ativaDesativaBotao()">
-    <label>Terceirizados</label>
-    <br>&emsp;
-    <input type="checkbox" id="estagiario" name="tipo_usuario" value="Estagiario" onchange="ativaDesativaBotao()">
-    <label>Estagiarios</label>
-    <br><br>
-    <label>Importar nomes de arquivo <b>nomes.csv:</b></label>
-    <input name="arquivo" id="arquivo" type="checkbox" value="1" onchange="ativaDesativaBotao()">
-    <br><br>
-    <label>Gerar folha única para:</label>
-    <input name="nome" class="nomeEmail" id="nome" maxlength="40" type="text" placeholder="Digite o Nome do Servidor..." autocomplete="off" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required onchange="ativaDesativaBotao()">
-    <br><br>
-    <label>Mês da Folha:</label> 
-    <select name="mes" id="mes" onchange="mostrarCheckboxFeriados()" required>
-        <option value="" selected>Selecione...</option>
-        <option value="1">Janeiro</option>
-        <option value="2">Fevereiro</option>
-        <option value="3">Março</option>
-        <option value="4">Abril</option>
-        <option value="5">Maio</option>
-        <option value="6">Junho</option>
-        <option value="7">Julho</option>
-        <option value="8">Agosto</option>
-        <option value="9">Setembro</option>
-        <option value="10">Outubro</option>
-        <option value="11">Novembro</option>
-        <option value="12">Dezembro</option>
-    </select>
-    <br><br>
-    <label>Primeiro dia do mês será num(a):</label>
-    <select name="dia" required>
-        <option value="" selected>Selecionar...</option>
-        <option value="0">Domingo</option>
-        <option value="1">Sábado</option>
-        <option value="2">Sexta-feira</option>
-        <option value="3">Quinta-feira</option>
-        <option value="4">Quarta-feira</option>
-        <option value="5">Terça-feira</option>
-        <option value="6">Segunda-feira</option>
-    </select>
-    <br><br>
-    <label>Marque os feriados do mês:</label>
-    <div id="escolhaferiados"></div>
-    <br>
-    <input type="submit" value="Gerar Folha de Pontos">
-</form>
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>GFP - UERN-Natal</title>
+        <link rel='stylesheet' type='text/css' href='frontend/estilo.css'>
+        <link rel="icon" type="image/png" href="http://portal.uern.br/wp-content/uploads/2016/12/favicon-uern.png">
+    </head>
+    <body class="corpo">
+		<h1>Login - GFP</h1>
 
-<?php include 'frontend/rodape.html'; ?>
+		<?php
+			if(isset($_SESSION['mensagem'])) {
+				echo $_SESSION['mensagem'];
+				unset($_SESSION['mensagem']);
+			}
+		?>
+
+		<form class='login' method='POST' autocomplete='off'>
+	    	<label>Username: </label>
+		    <input type="text" name="usuario" placeholder="Digite o E-mail do Usuário..." required>
+		    <br><br>
+		    <label>Senha:</label>&emsp;&ensp;
+		    <input type="password" name="senha" placeholder="Digite a Senha do Usuário..." required>
+		    <br><br>
+		    <input type="submit" name="entrar" value="Entrar">
+		</form>
+    </body>
+</html>

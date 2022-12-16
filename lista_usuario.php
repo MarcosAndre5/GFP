@@ -4,7 +4,7 @@
 
     if(isset($_SESSION['nomeUsuario']) == false) {
         $_SESSION['mensagem'] = "<p class='msgErro'>Necessário fazer o login!</p>";
-        header('Location: login.php');
+        header('Location: index.php');
     }
 
     include 'frontend/cabecalho.html';
@@ -55,7 +55,7 @@
             }
         else
             echo "<tr>
-                    <td colspan='5'>
+                    <td colspan='6'>
                         Nenhum $funcao cadastrado.
                     </td>
                 </tr>";

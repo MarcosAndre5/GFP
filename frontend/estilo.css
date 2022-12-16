@@ -20,8 +20,6 @@ th, td {
 
 footer, .login { text-align: center; }
 
-.sair { text-align: right;  }
-
 .nomeEmail { width: 40%; }
 
 .msgErro {
@@ -73,3 +71,4 @@ footer, .login { text-align: center; }
     background-color: silver;
     border-bottom: solid red;
 }
+
