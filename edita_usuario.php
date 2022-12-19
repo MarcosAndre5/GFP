@@ -26,8 +26,6 @@
             $telefone = $usuario['telefone'];
         } else
             die("<p class='msgErro'>Usuário não encontrado!</p>");
-
-        echo "<h2>Editar de Usuários $nome</h2><hr>";
     }
 
     if(isset($_POST["atualizar"])) {
@@ -53,6 +51,8 @@
     }
 ?>
 
+<h2>Editar de Usuários: <?= $nome ?></h2>
+<hr>
 <form method="POST" autocomplete="off">
     <label>Nome:</label>
     <input class="nomeEmail" type="text" name="nome" value="<?= $nome ?>" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
