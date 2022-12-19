@@ -47,7 +47,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href='lista_usuario.php?deletar=$id' onclick=\"return confirm('Deseja deletar o $funcao?')\">
+                            <a href='lista_usuario.php?deletar=$id' onclick=\"return confirm('Deseja deletar o $funcao $nome?')\">
                                 Deletar
                             </a>
                         </td>
