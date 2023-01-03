@@ -23,12 +23,12 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <title>GFP - UERN-Natal</title>
+        <title>GFP - UERN/Natal</title>
         <link rel='stylesheet' type='text/css' href='frontend/estilo.css'>
         <link rel="icon" type="image/png" href="http://portal.uern.br/wp-content/uploads/2016/12/favicon-uern.png">
     </head>
     <body class="corpo">
-		<h1>Login - GFP</h1>
+		<h1>Login - GFP 2.0</h1>
 
 		<?php
 			if(isset($_SESSION['mensagem'])) {

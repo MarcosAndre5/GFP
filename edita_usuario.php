@@ -21,6 +21,7 @@
             $id = $usuario['id'];
             $nome = $usuario['nome'];
             $funcao = $usuario['funcao'];
+            $campus = $usuario['campus'];
             $condicao = $usuario['condicao'];
             $email = $usuario['email'];
             $telefone = $usuario['telefone'];
@@ -31,11 +32,12 @@
     if(isset($_POST["atualizar"])) {
         $nome = $_POST["nome"];
         $funcao = $_POST["funcao"];
+        $campus = $_POST["campus"];
         $condicao = $_POST["condicao"];
         $email = $_POST['email'];
         $telefone = $_POST["telefone"];
 
-        $atualiza = $consulta->atualizarUsuario($id, $nome, $funcao, $condicao, $email, $telefone);
+        $atualiza = $consulta->atualizarUsuario($id, $nome, $funcao, $campus, $condicao, $email, $telefone);
 
         if($atualiza->rowCount() > 0)
             $_SESSION['mensagem'] = "<p class='msgSucesso'>Usuário cadastrado com sucesso!</p>";
@@ -63,6 +65,13 @@
         <option value="Servidor">Servidor</option>
         <option value="Terceirizado">Terceirizado</option>
         <option value="Estagiario">Estagiario</option>
+    </select>
+    <br><br>
+    <label>Campus:</label>
+    <select name="campus">
+        <option value="<?= $campus ?>" selected><?= $campus ?></option>
+        <option value="Mossoró">Mossoró</option>
+        <option value="Natal">Natal</option>
     </select>
     <br><br>
     <label>Condição Atual:</label>

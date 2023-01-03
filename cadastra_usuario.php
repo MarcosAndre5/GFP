@@ -15,11 +15,12 @@
     if(isset($_POST["cadastrar"])){
         $nome = $_POST["nome"];
         $funcao = $_POST["funcao"];
+        $campus = $_POST['campus'];
         $condicao = $_POST["condicao"];
         $email = $_POST["email"];
         $telefone = $_POST["telefone"];
 
-        $cadastro = $consulta->cadastrarUsuario($nome, $funcao, $condicao, $email, $telefone);
+        $cadastro = $consulta->cadastrarUsuario($nome, $funcao, $campus, $condicao, $email, $telefone);
 
         if($cadastro->rowCount() > 0)
             $_SESSION['mensagem'] = "<p class='msgSucesso'>Usuário cadastrado com sucesso!</p>";
@@ -50,6 +51,13 @@
         <option value="Estagiario">Estagiario</option>
     </select>
     <br><br>
+    <label>Campus:</label>
+    <select name="campus">
+        <option value="" selected>Selecionar...</option>
+        <option value="Mossoró">Mossoró</option>
+        <option value="Natal">Natal</option>
+    </select>
+    <br><br>
     <label>Condição Atual:</label>
     <select name="condicao">
         <option value="" selected>Selecionar...</option>
@@ -66,6 +74,7 @@
     <br><br>
     <input type="submit" name="cadastrar" value="Cadastrar Usuário">
 </form>
+
 <script>$("#telefone").mask("(99) 99999-9999");</script>
 
 <?php include 'frontend/rodape.html'; ?>
