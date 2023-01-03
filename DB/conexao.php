@@ -29,20 +29,20 @@ Class Consulta {
             return false;
     }
 
-    public function cadastrarUsuario($nome, $funcao, $condicao, $email, $telefone) {
+    public function cadastrarUsuario($nome, $funcao, $campus, $condicao, $email, $telefone) {
         try {
-            $insert = $this->pdo->query("INSERT INTO usuarios (nome, funcao, condicao, email, telefone)
-                VALUES('$nome', '$funcao', '$condicao', '$email', '$telefone')");
+            $insert = $this->pdo->query("INSERT INTO usuarios (nome, funcao, campus, condicao, email, telefone)
+                VALUES('$nome', '$funcao', '$campus', '$condicao', '$email', '$telefone')");
         } catch(PDOException $e) {
             echo 'DB Erro: '.$e->getMessage();
         }
         return $insert;
     }
 
-    public function atualizarUsuario($id, $nome, $funcao, $condicao, $email, $telefone) {
+    public function atualizarUsuario($id, $nome, $funcao, $campus, $condicao, $email, $telefone) {
         try {
             $update = $this->pdo->query("UPDATE usuarios SET 
-                    nome = '$nome', funcao = '$funcao', condicao = '$condicao',
+                    nome = '$nome', funcao = '$funcao', campus = '$campus', condicao = '$condicao',
                     email = '$email', telefone = '$telefone'
                 WHERE id = '$id'");
         } catch(PDOException $e) {
@@ -63,7 +63,7 @@ Class Consulta {
 
     public function listarUsuariosFuncao($funcao) {
         try {
-            $select = $this->pdo->query("SELECT * FROM usuarios WHERE funcao = '$funcao' ORDER BY nome");
+            $select = $this->pdo->query("SELECT * FROM usuarios WHERE funcao = '$funcao' ORDER BY campus, nome");
             $usuarios = $select->fetchAll(PDO::FETCH_ASSOC);
         } catch(PDOException $e) {
             echo 'DB Erro: '.$e->getMessage();
@@ -71,9 +71,9 @@ Class Consulta {
         return $usuarios;
     }
 
-    public function listarNomesUsuariosFuncao($funcao) {
+    public function listarNomesUsuariosFuncao($funcao, $campus) {
         try {
-            $select = $this->pdo->query("SELECT nome FROM usuarios WHERE funcao = '$funcao' ORDER BY nome");
+            $select = $this->pdo->query("SELECT nome FROM usuarios WHERE funcao = '$funcao' AND campus = '$campus' ORDER BY nome");
             $nomes = $select->fetchAll(PDO::FETCH_ASSOC);
         } catch(PDOException $e) {
             echo 'DB Erro: '.$e->getMessage();

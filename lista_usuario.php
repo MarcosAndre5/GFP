@@ -19,6 +19,7 @@
             <table>
                 <tr class='legenda'>
                     <td>Nome</td>
+                    <td>Campus</td>
                     <td>Condição</td>
                     <td>Email</td>
                     <td>Telefone</td>
@@ -32,12 +33,14 @@
                 $id = $usuario['id'];
                 $nome = $usuario['nome'];
                 $funcao = $usuario['funcao'];
+                $campus = $usuario['campus'];
                 $condicao = $usuario['condicao'];
                 $email = $usuario['email'];
                 $telefone = $usuario['telefone'];
 
                 echo "<tr>
                         <td>$nome</td>
+                        <td>$campus</td>
                         <td>$condicao</td>
                         <td>$email</td>
                         <td>$telefone</td>
@@ -55,7 +58,7 @@
             }
         else
             echo "<tr>
-                    <td colspan='6'>
+                    <td colspan='7'>
                         Nenhum $funcao cadastrado.
                     </td>
                 </tr>";

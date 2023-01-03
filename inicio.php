@@ -24,6 +24,12 @@
     <input type="checkbox" id="estagiario" name="tipo_usuario" value="Estagiario" onchange="ativaDesativaBotao()">
     <label>Estagiarios</label>
     <br><br>
+    <label>Campus:</label>
+    <br>&emsp;
+    <input type="radio" name="campus" value="Mossoró" required>Mossoró
+    <br>&emsp;
+    <input type="radio" name="campus" value="Natal" required>Natal
+    <br><br>
     <label>Importar nomes de arquivo <b>nomes.csv:</b></label>
     <input name="arquivo" id="arquivo" type="checkbox" value="1" onchange="ativaDesativaBotao()">
     <br><br>

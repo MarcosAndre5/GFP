@@ -12,6 +12,7 @@ $dompdf = new Dompdf($options);
 $consulta = new Consulta();
 
 $mes = $_POST['mes'];
+$campus = $_POST['campus'];
 $primeiroDiaMes = $_POST['dia'];
 $arquivo = isset($_POST['arquivo']);
 $nomes[] = isset($_POST['nome']) ? $_POST['nome'] : "";
@@ -23,7 +24,7 @@ $nomeMes = [
 ];
 
 if($funcao == 'Servidor' || $funcao == 'Terceirizado' || $funcao == 'Estagiario')
-    $nomes = $consulta->listarNomesUsuariosFuncao($funcao);
+    $nomes = $consulta->listarNomesUsuariosFuncao($funcao, $campus);
 else if($arquivo == true) {
     $conteudo = fopen('nomes.csv', 'r');
 
