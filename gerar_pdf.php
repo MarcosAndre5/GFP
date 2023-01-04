@@ -54,7 +54,7 @@ if(count($nomes) > 0) {
 
     $dompdf->render();
 
-    $dompdf->stream('Folha_'.$nomeMes[$mes].'_'.$funcao.'.pdf', ["Attachment" => false]);
+    $dompdf->stream('Folha_'.$nomeMes[$mes].'_'.$funcao.'_'.$campus.'.pdf', ["Attachment" => false]);
 } else
     echo "<script>
             alert('Nenhum Usuário $funcao Cadastrado até o momento!')
