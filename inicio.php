@@ -13,7 +13,7 @@
 <h2>Gerar Folha</h2>
 <hr>
 <form action="gerar_pdf.php" method="POST" target="_blank">
-    <label>Gerar folha para: </label>
+    <label>Gerar folha de: </label>
     <br>&emsp;
     <input type="checkbox" id="servidor" name="tipo_usuario" value="Servidor" onchange="ativaDesativaBotao()">
     <label>Servidores</label>
@@ -24,7 +24,7 @@
     <input type="checkbox" id="estagiario" name="tipo_usuario" value="Estagiario" onchange="ativaDesativaBotao()">
     <label>Estagiarios</label>
     <br><br>
-    <label>Campus:</label>
+    <label>Do campus de:</label>
     <br>&emsp;
     <input type="radio" name="campus" value="Mossoró" required>Mossoró
     <br>&emsp;
