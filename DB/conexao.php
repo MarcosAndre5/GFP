@@ -73,7 +73,7 @@ Class Consulta {
 
     public function listarNomesUsuariosFuncao($funcao, $campus) {
         try {
-            $select = $this->pdo->query("SELECT nome FROM usuarios WHERE funcao = '$funcao' AND campus = '$campus' ORDER BY nome");
+            $select = $this->pdo->query("SELECT nome FROM usuarios WHERE funcao = '$funcao' AND campus = '$campus' AND condicao = 'Trabalhando' ORDER BY nome");
             $nomes = $select->fetchAll(PDO::FETCH_ASSOC);
         } catch(PDOException $e) {
             echo 'DB Erro: '.$e->getMessage();
