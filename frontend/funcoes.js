@@ -16,7 +16,7 @@ function mostrarCheckboxFeriados() {
 }
 
 function ativaDesativaBotao() {
-    arquivo = document.getElementById("arquivo").checked
+    arquivo = document.getElementById("arquivo").files[0]
     servidor = document.getElementById("servidor").checked
     estagiario = document.getElementById("estagiario").checked
     terceirizado = document.getElementById("terceirizado").checked
@@ -39,7 +39,7 @@ function ativaDesativaBotao() {
         document.getElementById("arquivo").disabled = true
         document.getElementById("servidor").disabled = true
         document.getElementById("terceirizado").disabled = true
-    } else if(arquivo == true) {
+    } else if(arquivo) {
         document.getElementById("nome").value = ""
         document.getElementById("nome").disabled = true
         document.getElementById("servidor").disabled = true

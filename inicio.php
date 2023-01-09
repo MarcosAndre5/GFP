@@ -12,7 +12,7 @@
 
 <h2>Gerar Folha</h2>
 <hr>
-<form action="gerar_pdf.php" method="POST" target="_blank">
+<form action="gerar_pdf.php" method="POST" target="_blank" enctype="multipart/form-data">
     <label>Gerar folha de: </label>
     <br>&emsp;
     <input type="checkbox" id="servidor" name="tipo_usuario" value="Servidor" onchange="ativaDesativaBotao()">
@@ -30,8 +30,8 @@
     <br>&emsp;
     <input type="radio" name="campus" value="Natal" required>Natal
     <br><br>
-    <label>Importar nomes de arquivo <b>nomes.csv:</b></label>
-    <input name="arquivo" id="arquivo" type="checkbox" value="1" onchange="ativaDesativaBotao()">
+    <label>Upload de arquivo .CSV com nomes:</label>
+    <input name="arquivo" id="arquivo" type="file" accept=".csv" onchange="ativaDesativaBotao()">
     <br><br>
     <label>Gerar folha única para:</label>
     <input name="nome" class="nomeEmail" id="nome" maxlength="40" type="text" placeholder="Digite o Nome do Servidor..." autocomplete="off" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required onchange="ativaDesativaBotao()">
