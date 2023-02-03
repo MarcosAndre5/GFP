@@ -1,5 +1,5 @@
 function mostrarCheckboxFeriados() {
-    date = new Date();
+    date = new Date()
     selectBox = document.getElementById('mes')
     mes = selectBox.options[selectBox.selectedIndex].value
     qtdDiasMes = (mes != '') ? new Date(date.getFullYear(), mes, 0).getDate() : 0
